@@ -1,0 +1,12 @@
+/* Added in some temporary variables and css just to make the file */
+
+:root {
+    --mainfont: 'Century Gothic', sans-serif;
+    --background: #212623;
+}
+
+body {
+    background-color: var(--background);
+    font-style: var(--mainfont);
+    color: white;
+}
