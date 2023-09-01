@@ -1,12 +1,62 @@
-/* Added in some temporary variables and css just to make the file */
-
-:root {
-    --mainfont: 'Century Gothic', sans-serif;
-    --background: #212623;
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-body {
-    background-color: var(--background);
-    font-style: var(--mainfont);
+.login-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-bottom: 2px solid #00bcd4;
+    outline: none;
+    align: center;
+}
+
+input[type="submit"] {
+    background-color: #f67f00;
     color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #b15b00;
+}
+
+p {
+    color: #666;
+    font-size: 14px;
+}
+
+a {
+    color: #00bcd4; /* Set the hyperlink color to cyan */
+    text-decoration: none; /* Remove underlines from hyperlinks */
+}
+
+a:hover {
+    text-decoration: underline; /* Add underline on hover for hyperlinks */
 }
