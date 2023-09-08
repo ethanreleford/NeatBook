@@ -1,4 +1,4 @@
-  .signupform {
+  .myForm {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +16,7 @@
     padding: 20px 40px;
     box-shadow: 10px 5px 15px 10px rgba(0, 0, 0, 0.2);
   }
-  
+
   .title {
     font-size: 50px;
     margin-bottom: 30px;
@@ -78,7 +78,7 @@
     font-size: 16px;
     margin-top: 30px;
 }
-  
+
 .submitBtn:hover {
     background-color: black;
     color: white;
@@ -102,7 +102,7 @@
 }
 
 .lgbtn{
-    text-decoration: underline;
+    text-decoration: none;
     font-weight: bold;
     background: none;
     border: none;
@@ -111,4 +111,8 @@
     padding: none;
     color: white;
     font: inherit;
+}
+
+.lgbtn:hover {
+    text-decoration: underline; /* Add underline on hover for hyperlinks */
 }
