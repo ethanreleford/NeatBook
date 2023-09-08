@@ -24,7 +24,7 @@
       </div>
       <div id = "acc">
         Don't have an account?
-        <button id = "lgbtn" class = "lgbtn" href="signup/index.html" formnovalidate>Sign-Up Here!</button>
+        <a id = "lgbtn" class = "lgbtn" href="signup/index.html" formnovalidate>Sign-Up Here!</button>
       </div>
 
       <input type="submit" id = "signup" class="submitBtn" value="Login">
@@ -39,9 +39,9 @@
             // Get the input values
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
-
+            console.log(username, password);
             // Replace these temporary values with your actual login API logic
-            const apiUrl = '/LAMPAPI/login.php';
+            const apiUrl = '/LAMPAPI/Login.php';
             const requestBody = {
                 login: username,
                 password: password
