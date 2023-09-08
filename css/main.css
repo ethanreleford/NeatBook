@@ -1,12 +1,114 @@
-/* Added in some temporary variables and css just to make the file */
+  .signupform {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
 
-:root {
-    --mainfont: 'Century Gothic', sans-serif;
-    --background: #212623;
+  .form {
+    background-color: linear-gradient(
+        to right,
+        #77C9D4 0%,
+        #57BC90 100%
+      );
+    width: 400px;
+    border-radius: 8px;
+    padding: 20px 40px;
+    box-shadow: 10px 5px 15px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .title {
+    font-size: 50px;
+    margin-bottom: 30px;
+  }
+
+  .inputContainer {
+    position: relative;
+    height: 45px;
+    width: 90%;
+    margin-bottom: 20px;
+  }
+
+.input {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  border: 1px solid #DADCE0;
+  border-radius: 7px;
+  font-size: 16px;
+  padding: 0 20px;
+  outline: none;
+  background: none;
+  z-index: 1;
 }
 
-body {
-    background-color: var(--background);
-    font-style: var(--mainfont);
+/* Hide the placeholder texts (a) */
+
+::placeholder {
+  color: transparent;
+}
+
+.label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 0 4px;
+    background-color: linear-gradient(
+        to right,
+        #77C9D4 100%,
+        #57BC90 0%
+      );
+    color: #DADCE0;
+    font-size: 16px;
+    transition: 0.5s;
+    z-index: 0;
+}
+
+.submitBtn {
+    display: block;
+    margin-left: auto;
+    padding: 15px 30px;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 30px;
+}
+  
+.submitBtn:hover {
+    background-color: black;
     color: white;
+}
+
+.input:focus + .label {
+    top: -17px;
+    left: 3px;
+    z-index: 10;
+    color: black;
+}
+
+.input:focus {
+    border: 2px solid black;
+}
+
+.input:not(:placeholder-shown)+ .label {
+    top: -17px;
+    left: 3px;
+    z-index: 10;
+}
+
+.lgbtn{
+    text-decoration: underline;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: inherit;
+    padding: none;
+    color: white;
+    font: inherit;
 }

@@ -1,10 +1,63 @@
-<html>
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="stylesheet" href="./css/main.css" />
-		<title>Contacts</title>
-	</head>
-	<body>
-		<hl>Hello World!</hl>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Arvo&display=swap" rel="stylesheet">
+    <title>Login/SignUp Page</title>
+</head>
+<body>
+    <div class = "signupform">
+    <form action = "" id = "myForm" class = "form">
+    <h1 class = "title" id = "tform">Sign-Up</h1>
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="a">
+        <label for="" class="label">Username</label>
+      </div>
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="a">
+        <label for="" class="label">Password</label>
+      </div>
+      <div id = "acc">
+        Already have an account
+        <button id = "lgbtn" class = "lgbtn">Login Here!</button>
+      </div>
+      
+      <input type="submit" id = "signup" class="submitBtn" value="Sign up">
+    </form>
+    </div>
+    <script>
+      var clicked = false;
+      var inputElement = document.getElementById("signup");
+      var buttonElement = document.getElementById("lgbtn");
+      var formElement = document.getElementById("myForm");
+      var button = document.getElementById("lgbtn");  
+      var h1 = document.getElementById("tform");
+
+      buttonElement.addEventListener("click", function() {
+        if(clicked == false){
+          tform.textContent = "Login"
+          inputElement.value = "Login";
+          button.textContent = "SignUp Here!";
+          clicked = true;
+        }else{
+            tform.textContent = "Sign-Up"
+          inputElement.value = "Sign Up";
+          button.textContent = "Login Here!";
+          clicked = false;
+        }
+      });
+      formElement.addEventListener("submit", function(event) {
+        event.preventDefault();
+    });
+
+    
+    
+    </script>
+</body>
 </html>
+
