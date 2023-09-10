@@ -41,7 +41,7 @@
             const password = document.getElementById("password").value;
 
             // Replace these temporary values with your actual login API logic
-            const apiUrl = '/LAMPAPI/Login.php';
+            const apiUrl = '../LAMPAPI/Login.php';
             const requestBody = {
                 login: username,
                 password: password
@@ -65,7 +65,6 @@
 
                     alert('Login successful');
                     window.location.href = "../";
-                    // Redirect to another page if needed
                 } else {
                     alert('Login failed. Please check your credentials.');
                 }

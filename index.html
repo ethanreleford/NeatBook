@@ -19,6 +19,7 @@
 <script>
     // Check for the presence of the user ID in session storage
     const userId = sessionStorage.getItem("user_id");
+    const firstName = sessionStorage.getItem("firstName");
 
     // Set the text value of the HTML element with the "name" ID
     const nameElement = document.getElementById("name");
@@ -29,7 +30,7 @@ if (!userId) {
     window.location.href = "login/";
 } else {
     // The user is authenticated; continue with the current page
-    nameElement.textContent = "Welcome, ${storedName}!";
+    nameElement.textContent = "Welcome, " + firstName;
 }
 </script>
 </html>
