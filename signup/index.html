@@ -14,17 +14,27 @@
     <div class = "myForm">
     <form action = "" id = "myForm" class = "form">
     <h1 class = "title" id = "tform">Sign-Up</h1>
+      <div class="name">
+        <div class="inputContainer">
+            <input type="text" class="input" placeholder="a" id="firstName" required>
+            <label class="label">First Name</label>
+          </div>
+          <div class="inputContainer">
+            <input type="text" class="input" placeholder="a" id="lastName" required>
+            <label class="label">Last Name</label>
+          </div>
+      </div>
       <div class="inputContainer">
         <input type="text" class="input" placeholder="a">
-        <label for="" class="label">Username</label>
+        <label class="label">Username</label>
       </div>
       <div class="inputContainer">
         <input type="password" class="input" placeholder="a">
-        <label for="" class="label">Password</label>
+        <label class="label">Password</label>
       </div>
       <div id = "acc">
         Already have an account?
-        <a id = "lgbtn" class = "lgbtn" href="../index.html" formnovalidate>Login Here!</button>
+        <a id = "lgbtn" class = "lgbtn" href="../" formnovalidate>Login Here!</button>
       </div>
 
       <input type="submit" id = "signup" class="submitBtn" value="Sign up">
