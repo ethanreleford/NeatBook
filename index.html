@@ -8,68 +8,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Arvo&display=swap" rel="stylesheet">
-    <title>Login Page</title>
+    <title>Welcome Page</title>
 </head>
 <body>
     <div class = "myForm">
-    <form action = "" id = "myForm" class = "form">
-    <h1 class = "title" id = "tform">Login</h1>
-      <div class="inputContainer">
-        <input type="text" class="input" placeholder="a" id="username" required>
-        <label for="" class="label">Username</label>
-      </div>
-      <div class="inputContainer">
-        <input type="password" class="input" placeholder="a" id="password" required>
-        <label for="" class="label">Password</label>
-      </div>
-      <div id = "acc">
-        Don't have an account?
-        <a id = "lgbtn" class = "lgbtn" href="signup/index.html" formnovalidate>Sign-Up Here!</button>
-      </div>
-
-      <input type="submit" id = "signup" class="submitBtn" value="Login">
-    </form>
+        <p id="name"></p>
     </div>
-
-    <script>
-        // JavaScript code for handling login
-        document.getElementById("myForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent the form from submitting
-
-            // Get the input values
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-            console.log(username, password);
-            // Replace these temporary values with your actual login API logic
-            const apiUrl = '/LAMPAPI/Login.php';
-            const requestBody = {
-                login: username,
-                password: password
-            };
-
-            // Send a POST request to your login API
-            fetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(requestBody)
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Handle the API response here
-                if (data.success) {
-                    alert('Login successful');
-                    // Redirect to another page if needed
-                } else {
-                    alert('Login failed. Please check your credentials.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
-    </script>
 </body>
+
+<script>
+    // Check for the presence of the user ID in session storage
+    const userId = sessionStorage.getItem("user_id");
+
+    // Set the text value of the HTML element with the "name" ID
+    const nameElement = document.getElementById("name");
+
+if (!userId) {
+    // The user is not authenticated; redirect to the login page
+    nameElement.textContent = "Redirecting!";
+    window.location.href = "login/";
+} else {
+    // The user is authenticated; continue with the current page
+    nameElement.textContent = "Welcome, ${storedName}!";
+}
+</script>
 </html>
 
