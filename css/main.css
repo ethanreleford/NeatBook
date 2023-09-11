@@ -116,3 +116,10 @@
 .lgbtn:hover {
     text-decoration: underline; /* Add underline on hover for hyperlinks */
 }
+
+.name {
+    display: grid;
+    width: 94%;
+    grid-template-columns: auto auto;
+    grid-column-gap: 10%;
+}
