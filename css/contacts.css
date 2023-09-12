@@ -1,4 +1,33 @@
 .userTitle{
-    padding:  30px;
+    padding:  20px;
+}
+/* Style the entire table */
+table {
+    border-collapse: collapse; /* Collapse the borders between cells */ /* Make the table take the full width of its container */
+    border: 4px solid #FFFFFF; /* Add a white border around the entire table */
+    border-radius: 10px; /* Round the corners of the table */
+    width: 70%;
+    margin: 0 auto;
 }
 
+
+/* Style individual table header cells (th) */
+thead th {
+    padding: 10px; /* Add padding to th elements for spacing */
+    text-align: left; /* Align text to the left within th elements */
+    border: 4px solid #FFFFFF;
+    border-bottom: 4px solid #FFFFFF; /* Add a white border at the bottom of th elements */
+}
+
+/* Style table rows (tr) */
+tr {
+    background-color: transparent; /* Transparent background for table rows */
+}
+
+/* Style individual table cells (td) */
+td {
+    padding: 10px; /* Add padding to td elements for spacing */
+    text-align: left; /* Align text to the left within td elements */
+    border: 2px solid #FFFFFF; /* Add a white border around each cell */
+    border-radius: 5px; /* Round the corners of the cells */
+}
