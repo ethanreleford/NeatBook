@@ -31,6 +31,8 @@ if (!userId) {
 } else {
     // The user is authenticated; continue with the current page
     nameElement.textContent = "Welcome, " + firstName;
+    nameElement.textContent = "Redirecting!";
+    window.location.href = "contacts/";
 }
 </script>
 </html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/font.css">
+    <link rel="stylesheet" href="/css/contacts.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Arvo&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class = "userTitle">WELCOME, <span id="firstNameDisplay"></span></h1>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>User ID</th>
+            </tr>
+        </thead>
+        <tbody id="contactsTableBody">
+        </tbody>
+    </table>
+    <script>
+        document.getElementById("firstNameDisplay").textContent = firstName;
+        // Replace this with the URL of the API endpoint that provides user-specific contacts
+        const apiEndpoint = `http://poosd.xyz/LAMPAPI/SearchContacts.php`;
+
+        const searchRequest = {
+            search: "", // Provide an empty search query to retrieve all contacts
+            userId: "1", // Replace with the appropriate user ID or identifier
+        };
+        
+
+        fetch('apiEndpoint', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(searchRequest),
+        })
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(contact => {
+                    const newRow = document.createElement('tr');
+                    newRow.innerHTML = `
+                        <td>${contact.firstName}</td>
+                        <td>${contact.lastName}</td>
+                        <td>${contact.email}</td>
+                        <td>${contact.phoneNumber}</td>
+                        <td>${contact.userId}</td>
+                    `;
+                    contactsTableBody.appendChild(newRow);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching contacts:', error);
+            });
+    </script>
+</body>
+</html>
