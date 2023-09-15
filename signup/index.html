@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/font.css">
+    <script src="../js/fadeOut.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Arvo&display=swap" rel="stylesheet">
@@ -12,33 +13,38 @@
 </head>
 <body>
     <div class = "myForm">
-    <form action = "" id = "myForm" class = "form">
-    <h1 class = "title" id = "tform">Sign-Up</h1>
+    <form id = "myForm" class = "form">
+    <div class = "wrapper" id = "wrapper">
+      <div class = "typewriter"><h1>Sign-Up.</h1></div>
       <div class="name">
-        <div class="inputContainer">
-            <input type="text" class="input" placeholder="a" id="firstName" required>
-            <label class="label">First Name</label>
-          </div>
-          <div class="inputContainer">
-            <input type="text" class="input" placeholder="a" id="lastName" required>
-            <label class="label">Last Name</label>
-          </div>
+        <div class="inputContainer" id="name">
+                <input type="text" class="input" placeholder="a" id="firstName" required>
+                <label for="firstName" class="label">First Name</label>
+        </div>
+        <div class="inputContainer" id="name">
+                <input type="text" class="input" placeholder="a" id="lastName" required>
+                <label for="lastName" class="label">Last Name</label>
+        </div>
       </div>
       <div class="inputContainer">
-        <input type="text" class="input" placeholder="a" id="username" required>
-        <label class="label">Username</label>
+        <input type="text" class="input" placeholder="a" id="username" autocomplete="username" required>
+        <label for="username" class="label">Username</label>
+        </input>
       </div>
       <div class="inputContainer">
         <input type="password" class="input" placeholder="a" id="password" required>
-        <label class="label">Password</label>
-      </div>
-      <div id = "acc">
-        Already have an account?
-        <a id = "lgbtn" class = "lgbtn" href="../login/" formnovalidate>Login Here!</button>
+        <label for="password" class="label">Password</label>
       </div>
 
-      <input type="submit" id = "signup" class="submitBtn" value="Sign up">
+      <div class = "acc">
+        Already have an account?
+      </div>
+
+      <button type="submit" class="button">Sign-Up</button>
+
+      <a id = "lgbtn" class = "lgbtn" onclick="fadeOut('../login');" formnovalidate>Login Here!</button></a>
     </form>
+    </div>
     </div>
 </body>
 
@@ -78,7 +84,7 @@
                 sessionStorage.setItem("firstName", firstName);
                 sessionStorage.setItem("lastName", lastName);
 
-                window.location.href = "../";
+                fadeOut("../");
             } else {
                 alert('Login failed. Please check your credentials.');
             }

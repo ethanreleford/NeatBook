@@ -1,53 +1,194 @@
-  .myForm {
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background: #e0e0e0;
+    font-family: 'Abril Fatface', cursive;
+    font-family: 'Arvo', serif;
+}
+
+.typewriter {
+    display: inline-block;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.typewriter h1 {
+    font-size: 50px;
+    width: 0%;
+    align-content: left;
+    display: inline-block;
+    overflow: hidden;
+    /* Ensures the content is not revealed until the animation */
+    border-right: .08em solid #ffa60000;
+    /* The typwriter cursor */
+    white-space: nowrap;
+    /* Keeps the content on a single line */
+    margin: 0 auto;
+    /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .05em;
+    animation:
+        typing 2s ease 2.2s 1 forwards,
+        blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+    from {
+        width: 0%
+    }
+
+    to {
+        width: 98%
+    }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+    from {
+        border-color: transparent;
+    }
+
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: #d43900;
+    }
+}
+
+.myForm {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-  }
+}
 
-  .form {
-    background-color: linear-gradient(
-        to right,
-        #77C9D4 0%,
-        #57BC90 100%
-      );
+.wrapper {
+    opacity: 0;
+
+    animation:
+        fadeIn 1s ease 1.5s 1 forwards;
+}
+
+.form {
     width: 400px;
-    border-radius: 8px;
     padding: 20px 40px;
-    box-shadow: 10px 5px 15px 10px rgba(0, 0, 0, 0.2);
-  }
+    border-radius: 56px;
+    background: #e0e0e0;
 
-  .title {
+    animation:
+        emerge 1s ease-out .2s 1 forwards;
+}
+
+@keyframes emerge {
+    0% {
+        box-shadow: 0px 0px 0px #dedede,
+                   -0px -0px 0px #e2e2e2;
+    }
+
+    25% {
+        box-shadow: 10px 10px 20px #d5d5d5,
+                   -10px -10px 20px #ebebeb;
+    }
+
+    50% {
+        box-shadow: 15px 15px 30px #cacaca,
+                   -15px -15px 30px #f6f6f6;
+    }
+
+    75% {
+        box-shadow: 20px 20px 40px #bcbcbc,
+                   -20px -20px 40px #ffffff;
+    }
+
+    100% {
+        box-shadow: 25px 25px 50px #afafaf,
+                   -25px -25px 50px #ffffff;
+    }
+}
+
+@keyframes submerge {
+    0% {
+        box-shadow: 25px 25px 50px #afafaf,
+                   -25px -25px 50px #ffffff;
+    }
+
+    25% {
+        box-shadow: 20px 20px 40px #bcbcbc,
+                   -20px -20px 40px #ffffff;
+    }
+
+    50% {
+        box-shadow: 15px 15px 30px #cacaca,
+                   -15px -15px 30px #f6f6f6;
+    }
+
+    75% {
+        box-shadow: 10px 10px 20px #d5d5d5,
+                   -10px -10px 20px #ebebeb;
+    }
+
+    100% {
+        box-shadow: 0px 0px 0px #dedede,
+                   -0px -0px 0px #e2e2e2;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.title {
     font-size: 50px;
     margin-bottom: 30px;
-  }
+}
 
-  .inputContainer {
+.inputContainer {
     position: relative;
     height: 45px;
     width: 90%;
-    margin-bottom: 20px;
-  }
+    margin-bottom: 30px;
+}
 
 .input {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  height: 100%;
-  width: 100%;
-  border: 1px solid #DADCE0;
-  border-radius: 7px;
-  font-size: 16px;
-  padding: 0 20px;
-  outline: none;
-  background: none;
-  z-index: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    border: 1px solid #212121;
+    border-radius: 7px;
+    font-size: 16px;
+    padding: 0 20px;
+    outline: none;
+    background: none;
+    z-index: 1;
 }
 
 /* Hide the placeholder texts (a) */
 
 ::placeholder {
-  color: transparent;
+    color: transparent;
 }
 
 .label {
@@ -55,36 +196,58 @@
     top: 15px;
     left: 15px;
     padding: 0 4px;
-    background-color: linear-gradient(
-        to right,
-        #77C9D4 100%,
-        #57BC90 0%
-      );
-    color: #DADCE0;
+    background-color: #e0e0e000;
     font-size: 16px;
     transition: 0.5s;
     z-index: 0;
+    transition: .35s ease-in-out;
 }
 
-.submitBtn {
+.acc {
+    width: 225px;
+    line-height: .8;
+    display: inline-block;
+    justify-content: left;
+    margin-bottom: 10px;
+    margin-top: 6px;
+}
+
+button {
+    float: right;
     display: block;
     margin-left: auto;
-    padding: 15px 30px;
+    margin-top: 0px;
+    margin-bottom: 15px;
+    padding: 15px 40px;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
     border: none;
-    background-color: rgb(255, 255, 255);
-    color: black;
-    border-radius: 6px;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
     cursor: pointer;
-    font-size: 16px;
-    margin-top: 30px;
+    outline: none;
+    float: right;
 }
 
-.submitBtn:hover {
-    background-color: black;
-    color: white;
+button:hover {
+    background-color: #23c483;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-5px);
+    text-decoration: none;
+    /* Remove underline on hover */
 }
 
-.input:focus + .label {
+button:active {
+    transform: translateY(-1px);
+}
+
+.input:focus+.label {
     top: -17px;
     left: 3px;
     z-index: 10;
@@ -92,34 +255,48 @@
 }
 
 .input:focus {
-    border: 2px solid black;
+    border: 2px solid #12130F;
 }
 
-.input:not(:placeholder-shown)+ .label {
+.input:not(:placeholder-shown)+.label {
     top: -17px;
     left: 3px;
     z-index: 10;
 }
 
-.lgbtn{
+.lgbtn {
+    position: static;
     text-decoration: none;
     font-weight: bold;
     background: none;
     border: none;
     cursor: pointer;
-    font-size: inherit;
+    font-size: 120%;
     padding: none;
-    color: white;
-    font: inherit;
+    color: #d43900;
+    float: left;
+    clear: left;
 }
 
 .lgbtn:hover {
-    text-decoration: underline; /* Add underline on hover for hyperlinks */
+    text-decoration: underline;
+    /* Add underline on hover for hyperlinks */
 }
 
 .name {
-    display: grid;
-    width: 94%;
-    grid-template-columns: auto auto;
-    grid-column-gap: 10%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+}
+
+#name{
+    width: 100%;
+}
+
+.name .inputContainer .input{
+    width:100% !important;
+    display: block !important;
+    box-sizing: border-box !important;
+    margin: 0;
 }
