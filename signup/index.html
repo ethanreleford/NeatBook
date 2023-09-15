@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
     <link rel="stylesheet" href="/css/main.css">
+    <script src="../js/fadeOut.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Arvo&display=swap" rel="stylesheet">
@@ -11,8 +13,8 @@
 </head>
 <body>
     <div class = "myForm">
-    <form action = "" id = "myForm" class = "form">
-    <div class = "wrapper">
+    <form id = "myForm" class = "form">
+    <div class = "wrapper" id = "wrapper">
       <div class = "typewriter"><h1>Sign-Up.</h1></div>
       <div class="name">
         <div class="inputContainer" id="name">
@@ -40,7 +42,7 @@
 
       <button type="submit" class="button">Sign-Up</button>
 
-      <a class = "lgbtn" href="../login/" formnovalidate>Login Here!</button></a>
+      <a id = "lgbtn" class = "lgbtn" onclick="fadeOut('../login');" formnovalidate>Login Here!</button></a>
     </form>
     </div>
     </div>
@@ -82,7 +84,7 @@
                 sessionStorage.setItem("firstName", firstName);
                 sessionStorage.setItem("lastName", lastName);
 
-                window.location.href = "../";
+                fadeOut("../");
             } else {
                 alert('Login failed. Please check your credentials.');
             }

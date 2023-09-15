@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/main.css">
-    <!-- <link rel="stylesheet" href="../css/font.css"> -->
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="../js/fadeOut.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Arvo&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
     <div class = "myForm">
     <form id = "myForm" class = "form">
 
-    <div class = "wrapper">
+    <div class = "wrapper" id = "wrapper">
         <div class = "typewriter"><h1>Login.</h1></div>
         <div class="inputContainer">
             <input type="text" class="input" placeholder="a" id="username" required>
@@ -31,7 +31,7 @@
 
         <button type="submit" class="button">Login</button>
 
-        <a id = "lgbtn" class = "lgbtn" href="../signup/" formnovalidate>Sign-Up Here!</button></a>
+        <a id = "lgbtn" class = "lgbtn" onclick="fadeOut('../signup/');" formnovalidate>Sign-Up Here!</button></a>
         </form>
         </div>
     </div>
@@ -40,7 +40,6 @@
         // JavaScript code for handling login
         document.getElementById("myForm").addEventListener("submit", function(event) {
             event.preventDefault(); // Prevent the form from submitting
-
             // Get the input values
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
@@ -68,91 +67,7 @@
                     sessionStorage.setItem("firstName", data.firstName);
                     sessionStorage.setItem("lastName", data.lastName);
 
-                    alert('Login successful');
-                    window.location.href = "../";
-                } else {
-                    alert('Login failed. Please check your credentials.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
-    </script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/main.css">
-    <!-- <link rel="stylesheet" href="../css/font.css"> -->
-    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Arvo&display=swap" rel="stylesheet">
-    <title>Login Page</title>
-</head>
-<body>
-    <div class = "myForm">
-    <form id = "myForm" class = "form">
-
-    <div class = "wrapper">
-        <div class = "typewriter"><h1>Login.</h1></div>
-        <div class="inputContainer">
-            <input type="text" class="input" placeholder="a" id="username" required>
-            <label class="label">Username</label>
-        </div>
-        <div class="inputContainer">
-            <input type="password" class="input" placeholder="a" id="password" required>
-            <label class="label">Password</label>
-        </div>
-        <div class = "acc">
-            Don't have an account?
-            <a id = "lgbtn" class = "lgbtn" href="../signup/" formnovalidate>Sign-Up Here!</button></a>
-        </div>
-
-        <button type="submit" class="button">Login</button>
-        </form>
-        </div>
-    </div>
-
-    <script>
-        // JavaScript code for handling login
-        document.getElementById("myForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent the form from submitting
-
-            // Get the input values
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-
-            // Replace these temporary values with your actual login API logic
-            const apiUrl = '../LAMPAPI/Login.php';
-            const requestBody = {
-                login: username,
-                password: password
-            };
-
-            // Send a POST request to your login API
-            fetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(requestBody)
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Handle the API response here
-                if (data.id != 0) {
-                    sessionStorage.setItem("user_id", data.id);
-                    sessionStorage.setItem("firstName", data.firstName);
-                    sessionStorage.setItem("lastName", data.lastName);
-
-                    alert('Login successful');
-                    window.location.href = "../";
+                    fadeOut("../");
                 } else {
                     alert('Login failed. Please check your credentials.');
                 }
