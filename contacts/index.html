@@ -16,6 +16,7 @@
 <body>    
     
     <h1 class = "userTitle">WELCOME, <span id="firstNameDisplay"></span></h1>
+
     <div class="inputContainer" id="search">
         <input type="text" class="input" placeholder="a">
         <label class="label">Search</label>
@@ -42,6 +43,9 @@
             <button class="addButton">Add</button>
           </div>
     </div>
+
+    <input type="text" id="searchInput" placeholder="Search...">
+
     <table>
         <thead>
             <tr>
@@ -69,6 +73,7 @@ function fetchAndDisplayContacts(searchTerm) {
         search: searchTerm,
         userId: "1", // Replace with the appropriate user ID or identifier
     };
+
 
     fetch(apiEndpoint, {
         method: 'POST',
@@ -352,6 +357,48 @@ function deleteRowAndSendAPIRequest(button) {
 
 // Initial table data load when the page loads
 fetchAndRefreshTable();
+
+
+    fetch(apiEndpoint, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(searchRequest),
+    })
+    .then(response => response.json())
+    .then(data => {
+        contactsTableBody.innerHTML = ''; // Clear the table before populating it with new data
+
+        if (data.results && Array.isArray(data.results)) {
+            data.results.forEach(contact => {
+                const newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td>${contact.FirstName}</td>
+                    <td>${contact.LastName}</td>
+                    <td>${contact.Email}</td>
+                    <td>${contact.PhoneNumber}</td>
+                `;
+                contactsTableBody.appendChild(newRow);
+            });
+        } else {
+            console.error('Invalid API response format');
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching contacts:', error);
+    });
+}
+
+// Event listener for the search input field
+searchInput.addEventListener('input', function () {
+    const searchTerm = searchInput.value.trim(); // Get the search query and remove leading/trailing spaces
+    fetchAndDisplayContacts(searchTerm);
+});
+
+// Initial load: Populate the table with all contacts
+fetchAndDisplayContacts("");
+
 
     </script>
 </body>

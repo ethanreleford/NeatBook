@@ -35,6 +35,7 @@ td {
     border-radius: 5px; /* Round the corners of the cells */
 }
 
+
 #search{
     left: 30%;
 }
@@ -172,4 +173,11 @@ tr:hover .remove-button {
 
 #contactsTableBody tr:last-child td:not(:last-child) {
     border-bottom: 4px solid white; /* Add a 4px bottom border to all but the last cell in the last row */
+
+#searchInput {
+    
+    width: 10%;
+   
+    /* Add more styles as needed */
+
 }
