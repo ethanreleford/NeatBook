@@ -9,10 +9,39 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Arvo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Document</title>
 </head>
-<body>
+<body>    
+    
     <h1 class = "userTitle">WELCOME, <span id="firstNameDisplay"></span></h1>
+    <div class="inputContainer" id="search">
+        <input type="text" class="input" placeholder="a">
+        <label class="label">Search</label>
+      </div>
+    <div class = "container">
+    <div class="sidebar">
+        <div class="inputContainer">
+            <input type="text" class="input" placeholder="a" ">
+            <label class="label" id="firstNameAdd">First Name</label>
+          </div>
+          <div class="inputContainer">
+            <input type="text" class="input" placeholder="a" >
+            <label class="label" id="lastNameAdd">Last Name</label>
+          </div>
+          <div class="inputContainer">
+            <input type="text" class="input" placeholder="a" >
+            <label class="label" id="emailAdd">Email</label>
+          </div>
+          <div class="inputContainer">
+            <input type="text" class="input" placeholder="a">
+            <label class="label" id="phoneNumberAdd">Phone Number</label>
+          </div>
+          <div class="inputContainer">
+            <button class="addButton">Add</button>
+          </div>
+    </div>
     <table>
         <thead>
             <tr>
@@ -20,47 +49,365 @@
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Phone Number</th>
-                <th>User ID</th>
             </tr>
         </thead>
         <tbody id="contactsTableBody">
+            <tr>
+                <td>woadkoawdwao</td>
+                <td>Releforddawdaw</td>
+                <td>ethanreledawdawd@gmail.com</td>
+                <td>954-789-3017</td>
+                <td><button class="edit-button">
+                    <span class="material-icons">edit</span>
+                </button>
+                <button class="remove-button">
+                    <span class="material-symbols-outlined">
+                        delete
+                        </span>
+                </button>
+                </td>
+            </tr>
+            <tr>
+                <td>woadkoawdwao</td>
+                <td>Releforddawdaw</td>
+                <td>ethanreledawdawd@gmail.com</td>
+                <td>954-789-3017</td>
+                <td><button class="edit-button">
+                    <span class="material-icons">edit</span>
+                </button>
+                <button class="remove-button">
+                    <span class="material-symbols-outlined">
+                        delete
+                        </span>
+                </button>
+                </td>
+            </tr>
+            <tr>
+                <td>woadkoawdwao</td>
+                <td>Releforddawdaw</td>
+                <td>ethanreledawdawd@gmail.com</td>
+                <td>954-789-3017</td>
+                <td><button class="edit-button">
+                    <span class="material-icons">edit</span>
+                </button>
+                <button class="remove-button">
+                    <span class="material-symbols-outlined">
+                        delete
+                        </span>
+                </button>
+                </td>
+            </tr>
+            <tr>
+                <td>woadkoawdwao</td>
+                <td>Releforddawdaw</td>
+                <td>ethanreledawdawd@gmail.com</td>
+                <td>954-789-3017</td>
+                <td><button class="edit-button">
+                    <span class="material-icons">edit</span>
+                </button>
+                <button class="remove-button">
+                    <span class="material-symbols-outlined">
+                        delete
+                        </span>
+                </button>
+                </td>
+            </tr>
         </tbody>
     </table>
+</div>
+<div class="bottom"></div>
     <script>
-        document.getElementById("firstNameDisplay").textContent = firstName;
-        // Replace this with the URL of the API endpoint that provides user-specific contacts
-        const apiEndpoint = `http://poosd.xyz/LAMPAPI/SearchContacts.php`;
+        // HTML element references
+const searchInput = document.getElementById('searchInput');
+const contactsTableBody = document.getElementById('contactsTableBody');
+document.getElementById("firstNameDisplay").textContent = sessionStorage.getItem('firstName').toUpperCase();
 
-        const searchRequest = {
-            search: "", // Provide an empty search query to retrieve all contacts
-            userId: "1", // Replace with the appropriate user ID or identifier
-        };
-        
+// Function to fetch and display contacts based on search query
+function fetchAndDisplayContacts(searchTerm) {
+    const apiEndpoint = 'http://poosd.xyz/LAMPAPI/SearchContacts.php';
+    const searchRequest = {
+        search: searchTerm,
+        userId: "1", // Replace with the appropriate user ID or identifier
+    };
 
-        fetch('apiEndpoint', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(searchRequest),
-        })
-            .then(response => response.json())
-            .then(data => {
-                data.forEach(contact => {
-                    const newRow = document.createElement('tr');
-                    newRow.innerHTML = `
-                        <td>${contact.firstName}</td>
-                        <td>${contact.lastName}</td>
-                        <td>${contact.email}</td>
-                        <td>${contact.phoneNumber}</td>
-                        <td>${contact.userId}</td>
-                    `;
-                    contactsTableBody.appendChild(newRow);
-                });
-            })
-            .catch(error => {
-                console.error('Error fetching contacts:', error);
+    fetch(apiEndpoint, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(searchRequest),
+    })
+    .then(response => response.json())
+    .then(data => {
+        contactsTableBody.innerHTML = ''; // Clear the table before populating it with new data
+
+        if (data.results && Array.isArray(data.results)) {
+            data.results.forEach(contact => {
+                const newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td>${contact.FirstName}</td>
+                    <td>${contact.LastName}</td>
+                    <td>${contact.Email}</td>
+                    <td>${contact.PhoneNumber}</td>
+                    <td><button class="edit-button">
+                        <span class="material-icons">edit</span>
+                    </button>
+                    </td>
+                `;
+                contactsTableBody.appendChild(newRow);
             });
+        } else {
+            console.error('Invalid API response format');
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching contacts:', error);
+    });
+}
+
+// Event listener for the search input field
+searchInput.addEventListener('input', function () {
+    const searchTerm = searchInput.value.trim(); // Get the search query and remove leading/trailing spaces
+    fetchAndDisplayContacts(searchTerm);
+});
+
+// Initial load: Populate the table with all contacts
+fetchAndDisplayContacts("");
+
+    </script>
+
+    <script>
+        const editButtons = document.querySelectorAll('.edit-button');
+        const tableRows = document.querySelectorAll('#contactsTableBody tr');
+        
+        editButtons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                // Get the row of the clicked button
+                const row = tableRows[index];
+        
+                // Check if the row is in edit mode
+                const isEditMode = row.classList.contains('edit-mode');
+        
+                if (!isEditMode) {
+                    // Enter edit mode
+                    row.classList.add('edit-mode');
+                    const cells = row.querySelectorAll('td');
+        
+                    cells.forEach((cell, cellIndex) => {
+                        // Skip the last cell (containing the edit button)
+                        if (cellIndex < cells.length - 1) {
+                            const originalValue = cell.textContent;
+                            const input = document.createElement('input');
+                            input.value = originalValue;
+                            cell.textContent = '';
+                            cell.appendChild(input);
+                        }
+                    });
+                } else {
+                    // Exit edit mode
+                    row.classList.remove('edit-mode');
+                    const cells = row.querySelectorAll('td');
+        
+                    cells.forEach((cell, cellIndex) => {
+                        // Skip the last cell (containing the edit button)
+                        if (cellIndex < cells.length - 1) {
+                            // Revert to the original content
+                            cell.innerHTML = cell.firstChild.value; // Update cell content with input value
+                        }
+                    });
+                }
+            });
+        });
+        
+    </script>
+    <script>
+const apiEndpointAdd = 'http://poosd.xyz/LAMPAPI/AddContact.php'; 
+// Define the API endpoint
+
+
+// Select the elements
+const firstNameInput = document.querySelector('#firstNameAdd');
+const lastNameInput = document.querySelector('#lastNameAdd');
+const emailInput = document.querySelector('#emailAdd');
+const phoneNumberInput = document.querySelector('#phoneNumberAdd');
+const addButton = document.querySelector('.addButton');
+const tableBody = document.getElementById('contactsTableBody');
+
+// Function to update the table with new data
+function updateTableWithData(data) {
+    // Clear existing table rows
+    tableBody.innerHTML = '';
+
+    // Loop through the data and add rows to the table
+    data.forEach(entry => {
+        const row = document.createElement('tr');
+        const firstNameCell = document.createElement('td');
+        firstNameCell.textContent = entry.firstName;
+        const lastNameCell = document.createElement('td');
+        lastNameCell.textContent = entry.lastName;
+        const emailCell = document.createElement('td');
+        emailCell.textContent = entry.email;
+        const phoneNumberCell = document.createElement('td');
+        phoneNumberCell.textContent = entry.phoneNumber;
+
+        // Create an edit button as shown in previous examples
+        const editButton = document.createElement('button');
+        editButton.classList.add('edit-button');
+        // Set up event listeners for editing and updating
+
+        // Append cells and edit button to the row
+        row.appendChild(firstNameCell);
+        row.appendChild(lastNameCell);
+        row.appendChild(emailCell);
+        row.appendChild(phoneNumberCell);
+        row.appendChild(editButton);
+
+        // Append the row to the table body
+        tableBody.appendChild(row);
+    });
+}
+
+// Add a click event listener to the "Add" button
+addButton.addEventListener('click', () => {
+    // Get the values from the input fields
+    const firstName = firstNameInput.value;
+    const lastName = lastNameInput.value;
+    const email = emailInput.value;
+    const phoneNumber = phoneNumberInput.value;
+
+    // Create a data object with the values
+    const data = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        phoneNumber: phoneNumber
+    };
+
+    // Make an API request to add the data to the database
+    fetch(apiEndpointAdd, {
+        method: 'POST', // Use POST for adding data
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data) // Convert data to JSON format
+    })
+    .then(response => response.json())
+    .then(result => {
+        // Handle the API response or any other actions as needed
+        console.log('Data added successfully:', result);
+        // Clear the input fields if needed
+        firstNameInput.value = '';
+        lastNameInput.value = '';
+        emailInput.value = '';
+        phoneNumberInput.value = '';
+
+        // Fetch the updated data from the server and update the table
+        fetch(apiEndpoint)
+        .then(response => response.json())
+        .then(updatedData => {
+            updateTableWithData(updatedData);
+        })
+        .catch(error => {
+            console.error('Error fetching updated data:', error);
+        });
+    })
+    .catch(error => {
+        // Handle errors
+        console.error('Error:', error);
+    });
+});
+
+// Fetch and initialize the table with data when the page loads
+fetch(apiEndpoint)
+.then(response => response.json())
+.then(initialData => {
+    updateTableWithData(initialData);
+})
+.catch(error => {
+    console.error('Error fetching initial data:', error);
+});
+
+
+    </script>
+    <script>
+        // Define the API endpoint
+const apiEndpointDelete = 'http://poosd.xyz/LAMPAPI/DeleteContact.php' ; // Replace with your actual API endpoint URL
+
+// Function to fetch and update the table data
+function fetchAndRefreshTable() {
+    // Fetch the latest data from the server
+    fetch(apiEndpoint)
+        .then(response => response.json())
+        .then(data => {
+            // Clear the current table content
+            tableBody.innerHTML = '';
+
+            // Populate the table with the updated data
+            data.forEach(entry => {
+                const row = document.createElement('tr');
+                // Create and populate table cells as needed
+                // ...
+
+                // Create the remove button as shown in the previous code
+                const removeButton = document.createElement('button');
+                removeButton.classList.add('remove-button');
+                // Set up event listeners for removal
+                // ...
+
+                // Append cells and the remove button to the row
+                row.appendChild(/* ... */);
+                row.appendChild(removeButton);
+
+                // Append the row to the table
+                tableBody.appendChild(row);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching and refreshing data:', error);
+        });
+}
+
+// Add a click event listener to each remove button
+document.addEventListener('click', event => {
+    if (event.target.classList.contains('remove-button')) {
+        // Get the button element that was clicked
+        const removeButton = event.target;
+        
+        // Call the deleteRowAndSendAPIRequest function when a remove button is clicked
+        deleteRowAndSendAPIRequest(removeButton);
+    }
+});
+
+// Function to delete a row and send a delete request to the API
+function deleteRowAndSendAPIRequest(button) {
+    // Get the row to be deleted
+    const row = button.closest('tr');
+
+    // Send an API request to delete the data associated with this row
+    // You need to specify the unique identifier or key for the data in your API request
+    // Replace 'your-api-endpoint' and 'data-id' with your actual endpoint and identifier
+    fetch(apiEndpoint + '/' + row.dataset.id, {
+        method: 'DELETE', // Use DELETE method for deletion
+    })
+    .then(response => {
+        if (response.ok) {
+            // If the API request is successful (status code 200), remove the row from the table
+            row.remove();
+
+            // Refresh the table with the latest data
+            fetchAndRefreshTable();
+        } else {
+            console.error('Failed to delete data from the API');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+// Initial table data load when the page loads
+fetchAndRefreshTable();
+
     </script>
 </body>
 </html>
