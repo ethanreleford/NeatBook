@@ -1,5 +1,6 @@
 .userTitle{
-    padding:  20px;
+    padding: 15px;
+    
 }
 /* Style the entire table */
 table {
@@ -8,6 +9,9 @@ table {
     border-radius: 10px; /* Round the corners of the table */
     width: 70%;
     margin: 0 auto;
+    border-collapse:collapse;
+    border-right: none;
+    border-bottom: none;
 }
 
 /* Style individual table header cells (th) */
@@ -31,9 +35,149 @@ td {
     border-radius: 5px; /* Round the corners of the cells */
 }
 
+
+#search{
+    left: 30%;
+}
+
+.inputContainer {
+    position: relative;
+    height: 45px;
+    width: 90%;
+    margin-bottom: 1px;
+    left: 2%;
+  }
+
+.input {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 50%;
+  width: 15%;
+  border: 1px solid #DADCE0;
+  border-radius: 7px;
+  font-size: 16px;
+  padding: 0px 10px;
+  outline: none;
+  background: none;
+  z-index: 1;
+}
+
+::placeholder {
+  color: transparent;
+}
+
+.label {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    padding: 0 5px;
+    background-color: linear-gradient(
+        to right,
+        #77C9D4 100%,
+        #57BC90 0%
+      );
+    color: #DADCE0;
+    font-size: 16px;
+    transition: 0.5s;
+    z-index: 0;
+}
+
+/* Style the container to hold the sidebar and content */
+.container {
+    display: flex;
+    align-items: flex-start;
+    max-width: 90%; /* Set a maximum width for the container */
+    margin: 0 auto; /* Center the container horizontally */
+    max-height: 60%; /* Set an initial max height for the container */
+    overflow-y: auto; /* Add a vertical scrollbar when content overflows */
+    box-shadow: 10px 5px 15px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px; /* Round the corners */
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Style the sidebar */
+.sidebar {
+    width: 20%; /* Adjust the width as needed */
+    padding: 10px;
+    background-color: #f2f2f200;
+}
+
+/* Style the content (table) */
+.content {
+    max-width: 10%; /* Adjust the width as needed */
+    padding: 10px;
+    overflow-y: auto; /* Add a vertical scrollbar for the content */
+}
+
+/* Style the input and button within the sidebar */
+.sidebar input[type="text"],
+.sidebar button {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.bottom{
+    padding:40px;
+}
+
+.addButton {
+    display: block;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left:4%;
+}
+
+.button:hover {
+    background-color: black;
+    color: white;
+}
+
+.edit-button {
+    visibility: hidden;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    color: black;
+}
+.remove-button {
+    visibility: hidden;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    color: black;
+}
+
+tr:hover .edit-button {
+    visibility: visible;
+}
+
+tr:hover .remove-button {
+    visibility: visible;
+}
+
+#contactsTableBody tr td:last-child {
+    border: none; 
+}
+
+#contactsTableBody tr td:nth-last-child(2) {
+    border-right: 4px solid white; 
+}
+
+#contactsTableBody tr:last-child td:not(:last-child) {
+    border-bottom: 4px solid white; /* Add a 4px bottom border to all but the last cell in the last row */
+
 #searchInput {
     
     width: 10%;
    
     /* Add more styles as needed */
+
 }
