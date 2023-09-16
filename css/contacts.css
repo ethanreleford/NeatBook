@@ -53,7 +53,7 @@ td {
   left: 0px;
   height: 50%;
   width: 15%;
-  border: 1px solid #DADCE0;
+  border: 1px solid #212121;
   border-radius: 7px;
   font-size: 16px;
   padding: 0px 10px;
@@ -71,17 +71,27 @@ td {
     top: 3px;
     left: 3px;
     padding: 0 5px;
-    background-color: linear-gradient(
-        to right,
-        #77C9D4 100%,
-        #57BC90 0%
-      );
-    color: #DADCE0;
+    color: #212121;
     font-size: 16px;
     transition: 0.5s;
     z-index: 0;
 }
+.input:focus+.label {
+    top: -17px;
+    left: 3px;
+    z-index: 10;
+    color: black;
+}
 
+.input:focus {
+    border: 2px solid #12130F;
+}
+
+.input:not(:placeholder-shown)+.label {
+    top: -17px;
+    left: 3px;
+    z-index: 10;
+}
 /* Style the container to hold the sidebar and content */
 .container {
     display: flex;
@@ -172,4 +182,9 @@ tr:hover .remove-button {
 
 #contactsTableBody tr:last-child td:not(:last-child) {
     border-bottom: 4px solid white; /* Add a 4px bottom border to all but the last cell in the last row */
+
+
 }
+
+}
+
