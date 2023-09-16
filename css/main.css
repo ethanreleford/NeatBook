@@ -1,12 +1,3 @@
-body {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    background: #e0e0e0;
-    font-family: 'Abril Fatface', cursive;
-    font-family: 'Arvo', serif;
-}
-
 .typewriter {
     display: inline-block;
     justify-content: left;
@@ -280,7 +271,6 @@ button:active {
 
 .lgbtn:hover {
     text-decoration: underline;
-    /* Add underline on hover for hyperlinks */
 }
 
 .name {
