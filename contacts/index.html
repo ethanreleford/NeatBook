@@ -18,7 +18,7 @@
     <h1 class = "userTitle">WELCOME, <span id="firstNameDisplay"></span></h1>
 
     <div class="inputContainer" id="search">
-        <input type="text" class="input" placeholder="a">
+        <input type="text" class="input" id="searchInput" placeholder="a">
         <label class="label">Search</label>
       </div>
     <div class = "container">
@@ -53,24 +53,70 @@
             </tr>
         </thead>
         <tbody id="contactsTableBody">
+            <tr>
+            <td>${contact.FirstName}</td>
+                    <td>${contact.LastName}</td>
+                    <td>${contact.Email}</td>
+                    <td>${contact.PhoneNumber}</td>
+                    <td>
+                        <button class="edit-button">
+                            <span class="material-icons">edit</span>
+                        </button>
+                        <button class="remove-button">
+                            <span class="material-symbols-outlined">
+                                delete
+                            </span>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>${contact.FirstName}</td>
+                            <td>${contact.LastName}</td>
+                            <td>${contact.Email}</td>
+                            <td>${contact.PhoneNumber}</td>
+                            <td>
+                                <button class="edit-button">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="remove-button">
+                                    <span class="material-symbols-outlined">
+                                        delete
+                                    </span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>${contact.FirstName}</td>
+                                    <td>${contact.LastName}</td>
+                                    <td>${contact.Email}</td>
+                                    <td>${contact.PhoneNumber}</td>
+                                    <td>
+                                        <button class="edit-button">
+                                            <span class="material-icons">edit</span>
+                                        </button>
+                                        <button class="remove-button">
+                                            <span class="material-symbols-outlined">
+                                                delete
+                                            </span>
+                                        </button>
+                                    </td>
+                                </tr>
         </tbody>
     </table>
 </div>
 <div class="bottom"></div>
     <script>
-        // HTML element references
+
 const searchInput = document.getElementById('searchInput');
 const contactsTableBody = document.getElementById('contactsTableBody');
-document.getElementById("firstNameDisplay").textContent = sessionStorage.getItem('firstName').toUpperCase();
+const firstNameDisplay = document.getElementById('firstNameDisplay');
 
-// Function to fetch and display contacts based on search query
 function fetchAndDisplayContacts(searchTerm) {
     const apiEndpoint = 'http://poosd.xyz/LAMPAPI/SearchContacts.php';
     const searchRequest = {
         search: searchTerm,
-        userId: "1", 
+        userId: "1",
     };
-
 
     fetch(apiEndpoint, {
         method: 'POST',
@@ -81,7 +127,7 @@ function fetchAndDisplayContacts(searchTerm) {
     })
     .then(response => response.json())
     .then(data => {
-        contactsTableBody.innerHTML = ''; 
+        contactsTableBody.innerHTML = '';
         if (data.results && Array.isArray(data.results)) {
             data.results.forEach(contact => {
                 const newRow = document.createElement('tr');
@@ -90,14 +136,15 @@ function fetchAndDisplayContacts(searchTerm) {
                     <td>${contact.LastName}</td>
                     <td>${contact.Email}</td>
                     <td>${contact.PhoneNumber}</td>
-                    <td><button class="edit-button">
-                        <span class="material-icons">edit</span>
-                    </button>
-                    <button class="remove-button">
-                        <span class="material-symbols-outlined">
-                            delete
+                    <td>
+                        <button class="edit-button">
+                            <span class="material-icons">edit</span>
+                        </button>
+                        <button class="remove-button">
+                            <span class="material-symbols-outlined">
+                                delete
                             </span>
-                    </button>
+                        </button>
                     </td>
                 `;
                 contactsTableBody.appendChild(newRow);
@@ -111,16 +158,25 @@ function fetchAndDisplayContacts(searchTerm) {
     });
 }
 
-// Event listener for the search input field
+
 searchInput.addEventListener('input', function () {
-    const searchTerm = searchInput.value.trim(); // Get the search query and remove leading/trailing spaces
+    const searchTerm = searchInput.value.trim();
     fetchAndDisplayContacts(searchTerm);
 });
 
-// Initial load: Populate the table with all contacts
+
 fetchAndDisplayContacts("");
 
+
+const storedFirstName = sessionStorage.getItem('firstName');
+if (storedFirstName) {
+    firstNameDisplay.textContent = storedFirstName.toUpperCase();
+}
+
     </script>
+
+
+
 
     <script>
         const editButtons = document.querySelectorAll('.edit-button');
@@ -128,19 +184,16 @@ fetchAndDisplayContacts("");
         
         editButtons.forEach((button, index) => {
             button.addEventListener('click', () => {
-                // Get the row of the clicked button
                 const row = tableRows[index];
-        
-                // Check if the row is in edit mode
                 const isEditMode = row.classList.contains('edit-mode');
         
                 if (!isEditMode) {
-                    // Enter edit mode
+                    
                     row.classList.add('edit-mode');
                     const cells = row.querySelectorAll('td');
         
                     cells.forEach((cell, cellIndex) => {
-                        // Skip the last cell (containing the edit button)
+                        
                         if (cellIndex < cells.length - 1) {
                             const originalValue = cell.textContent;
                             const input = document.createElement('input');
@@ -150,20 +203,58 @@ fetchAndDisplayContacts("");
                         }
                     });
                 } else {
-                    // Exit edit mode
-                    row.classList.remove('edit-mode');
+                    
                     const cells = row.querySelectorAll('td');
+                    const updatedData = {};
         
                     cells.forEach((cell, cellIndex) => {
-                        // Skip the last cell (containing the edit button)
+                        
                         if (cellIndex < cells.length - 1) {
-                            // Revert to the original content
-                            cell.innerHTML = cell.firstChild.value; // Update cell content with input value
+                            const input = cell.querySelector('input');
+                            const inputValue = input.value;
+                            updatedData[cellIndex === 0 ? 'FirstName' : 'Email'] = inputValue;
+                            cell.innerHTML = inputValue;
                         }
                     });
+        
+                    
+                    const apiEndpoint = 'http://poosd.xyz/LAMPAPI/UpdateContact.php';
+                    const updateRequest = {
+                        "FirstName": updatedData.FirstName,
+                        "LastName": updatedData.LastName,
+                        "Email": updatedData.Email,
+                        "PhoneNumber": updatedData.PhoneNumber,
+                        "Id": "1"
+                    };
+        
+                    fetch(apiEndpoint, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(updateRequest),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Handle the API response here
+                        if (data.status === "success") {
+                            console.log("Contact updated successfully:", data.message);
+                        } else {
+                            console.error("Failed to update contact:", data.error);
+                        }
+                    })
+                    .catch(error => {
+                        // Handle errors that occurred during the API request
+                        console.error("Error while updating contact:", error);
+                    });
+        
+                    // Remove the edit mode
+                    row.classList.remove('edit-mode');
                 }
             });
         });
+        
+        
     </script>
 </body>
 </html>

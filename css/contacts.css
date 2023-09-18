@@ -2,37 +2,34 @@
     padding: 15px;
     
 }
-/* Style the entire table */
+
 table {
-    border-collapse: collapse; /* Collapse the borders between cells */ /* Make the table take the full width of its container */
-    border: 4px solid #FFFFFF; /* Add a white border around the entire table */
-    border-radius: 10px; /* Round the corners of the table */
-    width: 70%;
+    border: 4px solid #FFFFFF; 
+    border-radius: 10px;
+    width: 75%;
     margin: 0 auto;
     border-collapse:collapse;
     border-right: none;
     border-bottom: none;
 }
 
-/* Style individual table header cells (th) */
 thead th {
-    padding: 10px; /* Add padding to th elements for spacing */
-    text-align: left; /* Align text to the left within th elements */
+    padding: 10px; 
+    text-align: left; 
     border: 4px solid #FFFFFF;
-    border-bottom: 4px solid #FFFFFF; /* Add a white border at the bottom of th elements */
+    border-bottom: 4px solid #FFFFFF; 
 }
 
-/* Style table rows (tr) */
 tr {
-    background-color: transparent; /* Transparent background for table rows */
+    background-color: transparent; 
 }
 
-/* Style individual table cells (td) */
 td {
-    padding: 10px; /* Add padding to td elements for spacing */
-    text-align: left; /* Align text to the left within td elements */
-    border: 2px solid #FFFFFF; /* Add a white border around each cell */
-    border-radius: 5px; /* Round the corners of the cells */
+    padding: 10px; 
+    text-align: left; 
+    border: 2px solid #FFFFFF;
+    border-radius: 5px; 
+    width: 25%;
 }
 
 #search{
@@ -92,35 +89,34 @@ td {
     left: 3px;
     z-index: 10;
 }
-/* Style the container to hold the sidebar and content */
+
 .container {
     display: flex;
     align-items: flex-start;
-    max-width: 90%; /* Set a maximum width for the container */
-    margin: 0 auto; /* Center the container horizontally */
-    max-height: 60%; /* Set an initial max height for the container */
-    overflow-y: auto; /* Add a vertical scrollbar when content overflows */
+    max-width: 90%; 
+    margin: 0 auto; 
+    max-height: 60%; 
+    overflow-y: auto; 
     box-shadow: 10px 5px 15px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 10px; /* Round the corners */
+    border-radius: 10px; 
     padding-top: 20px;
     padding-bottom: 20px;
 }
 
-/* Style the sidebar */
+
 .sidebar {
-    width: 20%; /* Adjust the width as needed */
+    width: 20%; 
     padding: 10px;
     background-color: #f2f2f200;
 }
 
-/* Style the content (table) */
+
 .content {
-    max-width: 10%; /* Adjust the width as needed */
+    max-width: 10%; 
     padding: 10px;
-    overflow-y: auto; /* Add a vertical scrollbar for the content */
+    overflow-y: auto;
 }
 
-/* Style the input and button within the sidebar */
 .sidebar input[type="text"],
 .sidebar button {
     width: 100%;
@@ -155,6 +151,7 @@ td {
     outline: none;
     color: black;
 }
+
 .remove-button {
     visibility: hidden;
     background-color: transparent;
@@ -171,19 +168,3 @@ tr:hover .edit-button {
 tr:hover .remove-button {
     visibility: visible;
 }
-
-#contactsTableBody tr td:last-child {
-    border: none; 
-}
-
-#contactsTableBody tr td:nth-last-child(2) {
-    border-right: 4px solid white; 
-}
-
-#contactsTableBody tr:last-child td:not(:last-child) {
-    border-bottom: 4px solid white; /* Add a 4px bottom border to all but the last cell in the last row */
-
-
-}
-
-
