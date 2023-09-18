@@ -1,10 +1,78 @@
-.userTitle{
-    padding: 15px;
-    
+.typewriter {
+    display: relative;
 }
 
+.typewriter {
+    font-size: 35px;
+    width: 0%;
+    display: relative;
+    overflow: hidden;
+    /* Ensures the content is not revealed until the animation */
+    border-right: .08em solid #ffa60000;
+    /* The typwriter cursor */
+    white-space: nowrap;
+    /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .05em;
+    animation:
+        typing 2s ease 2.2s 1 forwards,
+        blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+    from {
+        width: 0%
+    }
+
+    to {
+        width: 98%
+    }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+    from {
+        border-color: transparent;
+    }
+
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: #d43900;
+    }
+}
+
+
+.userTitle{
+    margin-right: 20px;
+    float: left;
+    white-space: nowrap;
+    margin-bottom: 20px;
+}
+
+.top-bar{
+    max-width: 90%;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f2f2f200;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin: 0 auto;
+    align-items: flex-end; /* Align items vertically to the bottom */
+}
+
+#searchBar{
+    width: 90%;
+    bottom: 0;
+}
+
+/* Style the entire table */
 table {
-    border: 4px solid #FFFFFF; 
+    border: 4px solid #FFFFFF;
     border-radius: 10px;
     width: 75%;
     margin: 0 auto;
@@ -14,26 +82,22 @@ table {
 }
 
 thead th {
-    padding: 10px; 
-    text-align: left; 
+    padding: 10px;
+    text-align: left;
     border: 4px solid #FFFFFF;
-    border-bottom: 4px solid #FFFFFF; 
+    border-bottom: 4px solid #FFFFFF;
 }
 
 tr {
-    background-color: transparent; 
+    background-color: transparent;
 }
 
 td {
-    padding: 10px; 
-    text-align: left; 
+    padding: 10px;
+    text-align: left;
     border: 2px solid #FFFFFF;
-    border-radius: 5px; 
+    border-radius: 5px;
     width: 25%;
-}
-
-#search{
-    left: 30%;
 }
 
 .inputContainer {
@@ -41,14 +105,30 @@ td {
     height: 45px;
     width: 90%;
     margin-bottom: 1px;
-    left: 2%;
-  }
+}
+
+.inputAddContainer {
+    position: relative;
+    height: 20px;
+    width: 100%;
+    margin-bottom: 22px;
+}
+
+.inputSearchContainer {
+    position: relative;
+    align-self: flex-end;
+    margin-left: auto;
+    height: 20px;
+    width: 25%;
+    margin-bottom: 10px;
+    margin-bottom: 20px;
+}
 
 .input {
   position: absolute;
   top: 0px;
   left: 0px;
-  height: 50%;
+  height: 100%;
   width: 15%;
   border: 1px solid #212121;
   border-radius: 7px;
@@ -91,28 +171,114 @@ td {
 }
 
 .container {
-    display: flex;
-    align-items: flex-start;
-    max-width: 90%; 
-    margin: 0 auto; 
-    max-height: 60%; 
-    overflow-y: auto; 
+    max-width: 90%; /* Set a maximum width for the container */
+    margin: 0 auto; /* Center the container horizontally */
+    max-height: 60%; /* Set an initial max height for the container */
+    overflow-y: auto; /* Add a vertical scrollbar when content overflows */
     box-shadow: 10px 5px 15px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 10px; 
+    border-radius: 10px;
     padding-top: 20px;
     padding-bottom: 20px;
+
+    animation:
+    emerge 1s ease-out .2s 1 forwards;
+}
+
+@keyframes emerge {
+    0% {
+        box-shadow: 0px 0px 0px #dedede,
+                   -0px -0px 0px #e2e2e2;
+    }
+
+    25% {
+        box-shadow: 10px 10px 20px #d5d5d5,
+                   -10px -10px 20px #ebebeb;
+    }
+
+    50% {
+        box-shadow: 15px 15px 30px #cacaca,
+                   -15px -15px 30px #f6f6f6;
+    }
+
+    75% {
+        box-shadow: 20px 20px 40px #bcbcbc,
+                   -20px -20px 40px #ffffff;
+    }
+
+    100% {
+        box-shadow: 25px 25px 50px #afafaf,
+                   -25px -25px 50px #ffffff;
+    }
+}
+
+@keyframes submerge {
+    0% {
+        box-shadow: 25px 25px 50px #afafaf,
+                   -25px -25px 50px #ffffff;
+    }
+
+    25% {
+        box-shadow: 20px 20px 40px #bcbcbc,
+                   -20px -20px 40px #ffffff;
+    }
+
+    50% {
+        box-shadow: 15px 15px 30px #cacaca,
+                   -15px -15px 30px #f6f6f6;
+    }
+
+    75% {
+        box-shadow: 10px 10px 20px #d5d5d5,
+                   -10px -10px 20px #ebebeb;
+    }
+
+    100% {
+        box-shadow: 0px 0px 0px #dedede,
+                   -0px -0px 0px #e2e2e2;
+    }
+}
+
+.wrapper {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+
+    animation:
+        fadeIn 1s ease 1.5s 1 forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
 }
 
 
 .sidebar {
-    width: 20%; 
+    width: 20%;
     padding: 10px;
     background-color: #f2f2f200;
 }
 
 
 .content {
-    max-width: 10%; 
+    max-width: 10%;
     padding: 10px;
     overflow-y: auto;
 }
@@ -127,20 +293,38 @@ td {
     padding:40px;
 }
 
-.addButton {
+button {
     display: block;
+    margin-left: auto;
+    margin-top: 0px;
+    margin-bottom: 15px;
+    padding: 5px 40px;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
     border: none;
-    background-color: rgb(255, 255, 255);
-    color: black;
-    border-radius: 6px;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
     cursor: pointer;
-    font-size: 16px;
-    margin-left:4%;
+    outline: none;
+    margin: 0 auto
 }
 
-.button:hover {
-    background-color: black;
-    color: white;
+button:hover {
+    background-color: #23c483;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-5px);
+    text-decoration: none;
+    /* Remove underline on hover */
+}
+
+button:active {
+    transform: translateY(-1px);
 }
 
 .edit-button {
@@ -167,4 +351,16 @@ tr:hover .edit-button {
 
 tr:hover .remove-button {
     visibility: visible;
+}
+
+#contactsTableBody tr td:last-child {
+    border: none;
+}
+
+#contactsTableBody tr td:nth-last-child(2) {
+    border-right: 4px solid white;
+}
+
+#contactsTableBody tr:last-child td:not(:last-child) {
+    border-bottom: 4px solid white; /* Add a 4px bottom border to all but the last cell in the last row */
 }
