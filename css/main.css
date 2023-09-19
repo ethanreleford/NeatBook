@@ -58,7 +58,7 @@
     height: 100vh;
 }
 
-.wrapper {
+.fadeinWrapper {
     opacity: 0;
 
     animation:
