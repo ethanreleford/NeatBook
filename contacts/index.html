@@ -24,7 +24,7 @@
 </head>
 <body>
     <div class="top-bar">
-        <h1 class = "userTitle">WELCOME, &nbsp<span id="firstNameDisplay" class = "typewriter">Linus</span></h1>
+        <h1 class = "userTitle">WELCOME, &nbsp<span id="firstNameDisplay" class = "typewriter"></span></h1>
         <div class="inputSearchContainer">
             <input type="text" class="search input" placeholder="a">
             <label class="label">Search</label>
@@ -34,29 +34,31 @@
 <div class="mainContainer">
 
     <div class = "addContainer">
-    <div class="addBar">
-        <div class="inputAddContainer">
-            <input type="text" class="add input" placeholder="a">
-            <label class="label" id="firstNameAdd">First Name</label>
-        </div>
-        <div class="inputAddContainer">
-            <input type="text" class="add input" placeholder="a">
-            <label class="label" id="lastNameAdd">Last Name</label>
-        </div>
-        <div class="inputAddContainer">
-            <input type="text" class="add input" placeholder="a">
-            <label class="label" id="emailAdd">Email</label>
-        </div>
-        <div class="inputAddContainer">
-            <input type="text" class="add input" placeholder="a">
-            <label class="label" id="phoneNumberAdd">Phone Number</label>
-        </div>
-        <div >
-            <button class="adding button" id="addButton">ADD</button>
+        <div class="fadeinWrapper">
+            <div class="addBar">
+                <div class="inputAddContainer">
+                    <input type="text" class="add input" placeholder="a">
+                    <label class="label" id="firstNameAdd">First Name</label>
+                </div>
+                <div class="inputAddContainer">
+                    <input type="text" class="add input" placeholder="a">
+                    <label class="label" id="lastNameAdd">Last Name</label>
+                </div>
+                <div class="inputAddContainer">
+                    <input type="text" class="add input" placeholder="a">
+                    <label class="label" id="emailAdd">Email</label>
+                </div>
+                <div class="inputAddContainer">
+                    <input type="text" class="add input" placeholder="a">
+                    <label class="label" id="phoneNumberAdd">Phone Number</label>
+                </div>
+                <div >
+                    <button class="adding button" id="addButton">ADD</button>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
-    
+
     <div class = "tableContainer">
     <div class="fadeinWrapper">
         <table>
@@ -69,7 +71,7 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody id="contactsTableBody">                                      
+            <tbody id="contactsTableBody">
             </tbody>
         </table>
     </div>
