@@ -1,0 +1,50 @@
+table {
+    width: 100%;
+    height: 100%;
+    border: 4px solid #FFFFFF;
+    border-radius: 10px;
+    margin: 0 auto;
+    border-collapse:collapse;
+    border-right: none;
+    border-bottom: none;
+}
+
+thead th {
+    padding: 10px;
+    text-align: center;
+    border: 4px solid #FFFFFF;
+    border-bottom: 4px solid #FFFFFF;
+}
+
+tr {
+    background-color: transparent;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #FFFFFF;
+    border-radius: 5px;
+    width: 25%;
+}
+
+.tableContainer {
+    width: 65%;
+    height: 60%; 
+    overflow-y: auto; 
+    box-shadow: 10px 5px 15px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+    animation:
+    emerge 1s ease-out .2s 1 forwards;
+}
+
+.optionButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    color: black;
+    margin-bottom: 6px;
+    margin-top: 1px;
+}
