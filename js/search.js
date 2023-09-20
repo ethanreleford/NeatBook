@@ -28,10 +28,10 @@ function fetchAndDisplayContacts(searchTerm) {
                     <td>${contact.Email}</td>
                     <td>${contact.PhoneNumber}</td>
                     <td>
-                        <button class="optionButton">
+                        <button class="optionButton" id="editButton">
                             <span class="material-icons">edit</span>
                         </button>
-                        <button class="optionButton">
+                        <button class="optionButton" id="deleteButton">
                             <span class="material-symbols-outlined">
                                 delete
                             </span>
