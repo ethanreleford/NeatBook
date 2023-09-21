@@ -23,10 +23,10 @@ function fetchAndDisplayContacts(searchTerm) {
             data.results.forEach(contact => {
                 const newRow = document.createElement('tr');
                 newRow.innerHTML = `
-                    <td>${contact.FirstName}</td>
-                    <td>${contact.LastName}</td>
-                    <td>${contact.Email}</td>
-                    <td>${contact.PhoneNumber}</td>
+                    <td contenteditable="false">${contact.FirstName}</td>
+                    <td contenteditable="false">${contact.LastName}</td>
+                    <td contenteditable="false">${contact.Email}</td>
+                    <td contenteditable="false">${contact.PhoneNumber}</td>
                     <td>
                         <button class="optionButton" id="editButton">
                             <span class="material-icons">edit</span>

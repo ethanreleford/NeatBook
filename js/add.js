@@ -21,7 +21,7 @@ const addRequest = {
         'Content-Type': 'application/json',
     },
     body: JSON.stringify(addRequest),
-  }).then(response > response.json())
+  }).then(response => response.json())
   .then(data => {
     document.getElementById('firstNameAdd').value = '';
     document.getElementById('lastNameAdd').value = '';

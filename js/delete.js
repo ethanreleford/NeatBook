@@ -1,13 +1,13 @@
 const apiEndpointDelete =  "http://poosd.xyz/LAMPAPI/DeleteContact.php"
 
-const deleteButtons = document.querySelectorAll('deleteButton');
+const deleteButtons = document.querySelectorAll('#deleteButton');
 
-// Attach a click event listener to each delete button
+
 deleteButtons.forEach(button => {
     button.addEventListener('click', function() {
         const row = button.closest('tr'); 
-        const firstNameDelete = row.querySelector('').textContent;
-        const lastNameDelete = row.querySelector('').textContent;
+        const firstNameDelete = row.querySelector('td:first-child').textContent;
+        const lastNameDelete = row.querySelector('td:nth-child(2)').textContent;
 
         const deleteRequest = {
             "userId": "1",
@@ -24,8 +24,7 @@ deleteButtons.forEach(button => {
         })
         .then(response => response.json())
         .then(data => {
-            // Handle the response data or update the UI as needed
-            row.remove(); // Remove the row from the table on successful deletion
+            row.remove(); 
         })
         .catch(error => {
             console.error('Error:', error);
