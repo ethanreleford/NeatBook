@@ -10,11 +10,11 @@
     background: none;
     z-index: 1;
   }
-  
+
   ::placeholder {
     color: transparent;
   }
-  
+
   .label {
       position: absolute;
       top: 6px;
@@ -31,25 +31,25 @@
       z-index: 10;
       color: black;
   }
-  
+
   .input:focus {
       border: 2px solid #12130F;
   }
-  
+
   .input:not(:placeholder-shown)+.label {
       top: -17px;
       left: 3px;
       z-index: 10;
   }
-  
+
 .search{
     width: 90%;
 }
 
 
 .add{
-    width: 90%;
-  
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .inputSearchContainer {

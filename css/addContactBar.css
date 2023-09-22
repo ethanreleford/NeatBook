@@ -1,10 +1,15 @@
 .addContainer {
+    position: relative;
     width: 20%;
     height: 20%;
     box-shadow: 10px 5px 15px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     animation:
     emerge 1s ease-out .2s 1 forwards;
+    z-index: 1; /* Put div1 in front */
+}
+.addWrapper {
+    display: block !important;
 }
 
 .addBar {
@@ -16,17 +21,39 @@
 .addBar input[type="text"],
 .addBar button {
     width: 100%;
-    
+
 }
 .adding{
-    margin-left: 10px;
+
+}
+
+.addTitle{
+    margin-bottom: 0px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    position: static;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
 }
 
 .inputAddContainer {
     position: relative;
     height: 30px;
     width: 100%;
+    display: block;
+    box-sizing: border-box;
+    margin: 0 auto;
     margin-bottom: 22px;
+}
+
+label{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 button {
