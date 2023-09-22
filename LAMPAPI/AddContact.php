@@ -14,12 +14,27 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("INSERT into Contacts (FirstName,LastName,Email,PhoneNumber,UserID VALUES(?,?,?,?,?)");
+		$stmt = $conn->prepare("INSERT into Contacts (FirstName,LastName,Email,PhoneNumber,UserID) VALUES(?,?,?,?,?)");
 		$stmt->bind_param("sssss", $firstname, $lastname, $email, $phonenumber,$userId);
 		$stmt->execute();
+
+		$stmt2 = $conn->prepare("SELECT * FROM Contacts WHERE FirstName like ? and LastName like ? and Email like ? and PhoneNumber like ? and UserID = ?");
+		$stmt2->bind_param("sssss", $firstname, $lastname, $email, $phonenumber,$userId);
+		$stmt2->execute();
+
+		$result = $stmt2->get_result();
+
+		if($row = $result->fetch_assoc())
+		{
+			returnWithInfo($row['ID'] );
+		}
+		else
+		{
+			returnWithError("No Records Found");
+		}
+
 		$stmt->close();
 		$conn->close();
-		returnWithError("");
 	}
 
 	function getRequestInfo()
@@ -32,10 +47,10 @@
 		header('Content-type: application/json');
 		echo $obj;
 	}
-	
-	function returnWithError( $err )
+
+	function returnWithInfo( $id )
 	{
-		$retValue = '{"error":"' . $err . '"}';
+		$retValue = '{"id":' . $id . ',"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
