@@ -3,11 +3,10 @@ function update(){
  const jsonUserData = JSON.parse(localStorage.getItem('localData'));
 
  document.getElementById("contactsTableBody").innerHTML = '';
-
  
  for (let user of jsonUserData){
     const newRow = document.createElement('tr');
-    newRow.setAttribute('id', user.ContactID);
+    newRow.setAttribute('id', user.ContactId);
      newRow.innerHTML = `
          <td contenteditable="false">${user.FirstName}</td>
          <td contenteditable="false">${user.LastName}</td>
@@ -25,5 +24,10 @@ function update(){
          </td>
      `;
      contactsTableBody.appendChild(newRow);
+
+     document.getElementById(user.ContactId).getElementsByClassName('deleteButton')[0].addEventListener('click', function() {
+        const row = this.closest('tr');
+        Delete(row.id);
+    });
  }
 }

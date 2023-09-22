@@ -1,7 +1,7 @@
 function Delete(ContactID) {
     // 1. Call API to delete contactID
     const deleteRequest = {
-        "id" : ContactID
+        "Id" : ContactID
     };
     fetch(apiEndpointDelete, {
         method: 'POST',
@@ -13,18 +13,15 @@ function Delete(ContactID) {
     .then(response => response.json())
     .then(data => {
     // 2. Remove object from local JSON table
-        const currentData = JSON.parse(localStorage.getItem('localData'));
-        let indexToRemove = currentData.findIndex(obj => obj.id === ContactID);
-        
+        var currentData = JSON.parse(localStorage.getItem('localData'));
+        console.log("ContactID to Remove: ", ContactID);
 
-        if(indexToRemove !== 1){
-            currentData.splice(indexToRemove, 1);
-        }
+        currentData = currentData.filter(contact => contact.ContactId !== ContactID);
 
         localStorage.setItem('localData', JSON.stringify(currentData))
     // 3. Call update
 
-    update();         
+    update();
 
     })
     .catch(error => {
@@ -38,7 +35,7 @@ const deleteButtons = document.querySelectorAll('.deleteButton');
 
 deleteButtons.forEach(button => {
     button.addEventListener('click', function() {
-        const row = button.closest('tr'); 
+        const row = button.closest('tr');
         Delete(row.id);
     });
 });
