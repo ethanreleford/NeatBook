@@ -5,6 +5,7 @@ function update(){
  document.getElementById("contactsTableBody").innerHTML = '';
  
  for (let user of jsonUserData){
+    //console.log("contactId = " + user.ContactId);
     const newRow = document.createElement('tr');
     newRow.setAttribute('id', user.ContactId);
      newRow.innerHTML = `

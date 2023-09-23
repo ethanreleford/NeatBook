@@ -30,24 +30,32 @@ function add(){
   
       const currentData = localStorage.getItem("localData");
   
-  
-      var userData = currentData ? JSON.parse(currentData) : [];
+      let userData;
+
+      if (currentData) {
+        // Parse the JSON data into an array if it exists and is an array
+        userData = Array.isArray(JSON.parse(currentData)) ? JSON.parse(currentData) : [];
+      } else {
+        // Initialize userData as an empty array if there's no data in localStorage
+        userData = [];
+      }
+      
   
       const newData = {
         "FirstName": firstNameAdd,
         "LastName": lastNameAdd,
         "PhoneNumber": phoneNumberAdd,
         "Email": emailAdd,
-        "ContactID" : data.id
+        "ContactId" : data.id.toString()
       }
 
       userData.push(newData);
 
       localStorage.setItem("localData", JSON.stringify(userData));
-
+      ///console.log("JSON Data in localStorage:", userData);
       update();
 
-      console.log("Added New Contact");
+      //console.log("Added New Contact" + newData.FirstName + "   " + newData.LastName + "   " + newData.PhoneNumber + "  contactId " + newData.ContactId);
     })
     .catch(error =>{
       console.error('Error:', error);
