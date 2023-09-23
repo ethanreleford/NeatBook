@@ -31,28 +31,30 @@
 
     <div class = "addContainer">
         <div class="fadeinWrapper addWrapper">
+            <form id="myForm">
             <h1 class = "addTitle">ADD CONTACT</h1>
             <div class="blankDiv"></div>
             <div class="addBar">
                 <div class="inputAddContainer">
-                    <input type="text" class="add input" id="firstNameAdd" placeholder="a">
+                    <input type="text" class="add input" id="firstNameAdd" placeholder="a" maxlength="50" required>
                     <label class="label">First Name</label>
                 </div>
                 <div class="inputAddContainer">
-                    <input type="text" class="add input" id="lastNameAdd" placeholder="a">
+                    <input type="text" class="add input" id="lastNameAdd" placeholder="a" maxlength="50">
                     <label class="label">Last Name</label>
                 </div>
                 <div class="inputAddContainer">
-                    <input type="text" class="add input" id="emailAdd" placeholder="a">
-                    <label class="label">Email</label>
+                    <input type="email" class="add input" id="emailAdd" placeholder="a" maxlength="50" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+                    <label for="" class="label">Email</label>
                 </div>
                 <div class="inputAddContainer">
-                    <input type="text" class="add input" id="phoneNumberAdd" placeholder="a">
+                    <input type="text" class="add input phoneNumber" id="phoneNumberAdd" placeholder="a" maxlength="16">
                     <label class="label">Phone #</label>
                 </div>
                 <div >
-                    <button class="adding button" id="addButton">ADD</button>
+                    <button type = "submit" class="adding button" id = "addButton">ADD</button>
                 </div>
+            </form>
             </div>
         </div>
     </div>
@@ -68,7 +70,7 @@
                     <th>Phone #</th>
                     <th></th>
                 </tr>
-                
+
             </thead>
             <tbody id="contactsTableBody">
         </table>
@@ -81,5 +83,7 @@
 <script src="../js/add.js"></script>
 <script src="../js/delete.js"></script>
 <script src="../js/edit.js"></script>
+<script src="../js/validPhone.js"></script>
+<script src="../js/validEmail.js"></script>
 </body>
 </html>

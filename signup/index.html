@@ -19,21 +19,22 @@
       <div class = "typewriter"><h1>Sign-Up.</h1></div>
       <div class="name">
         <div class="inputContainer" id="name">
-                <input type="text" class="input" placeholder="a" id="firstName" required>
+                <input type="text" class="input" placeholder="a" id="firstName" maxlength="50" required>
                 <label for="firstName" class="label">First Name</label>
         </div>
         <div class="inputContainer" id="name">
-                <input type="text" class="input" placeholder="a" id="lastName" required>
+                <input type="text" class="input" placeholder="a" id="lastName" maxlength="50" required>
                 <label for="lastName" class="label">Last Name</label>
         </div>
       </div>
-      <div class="inputContainer">
-        <input type="text" class="input" placeholder="a" id="username" autocomplete="username" required>
+      <div class="inputContainer" id = "usernameContainer">
+        <input type="text" class="input" placeholder="a" id="username" autocomplete="username" maxlength="50" required>
         <label for="username" class="label">Username</label>
+        <span id="errorMessage" class="error-message"></span> <!-- Pre-define the error message span but keep it empty -->
         </input>
       </div>
       <div class="inputContainer">
-        <input type="password" class="input" placeholder="a" id="password" required>
+        <input type="password" class="input" placeholder="a" id="password" maxlength="50" required>
         <label for="password" class="label">Password</label>
       </div>
 
@@ -49,52 +50,7 @@
     </div>
 </body>
 
-<script>
-    // JavaScript code for handling login
-    document.getElementById("myForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent the form from submitting
-
-        // Get the input values
-        const firstName = document.getElementById("firstName").value;
-        const lastName = document.getElementById("lastName").value;
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
-
-        // Replace these temporary values with your actual login API logic
-        const apiUrl = '../LAMPAPI/SignUp.php';
-        const requestBody = {
-            FirstName: firstName,
-            LastName: lastName,
-            Login: username,
-            Password: password
-        };
-
-        // Send a POST request to your login API
-        fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(requestBody)
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Handle the API response here
-            if (data.id != 0) {
-                sessionStorage.setItem("user_id", data.id);
-                sessionStorage.setItem("firstName", firstName);
-                sessionStorage.setItem("lastName", lastName);
-
-                fadeOut("../");
-            } else {
-                alert('Login failed. Please check your credentials.');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    });
-</script>
+<script src="../js/signUp.js"></script>
 
 </html>
 

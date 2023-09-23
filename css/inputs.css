@@ -9,6 +9,8 @@
     outline: none;
     background: none;
     z-index: 1;
+    white-space: nowrap; /* Prevents the text from wrapping to the next line */
+    overflow-x: auto;    /* Enables horizontal scrolling */
   }
 
   ::placeholder {
