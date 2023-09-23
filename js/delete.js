@@ -14,7 +14,7 @@ function Delete(ContactID) {
     .then(data => {
     // 2. Remove object from local JSON table
         var currentData = JSON.parse(localStorage.getItem('localData'));
-        console.log("ContactID to Remove: ", ContactID);
+        //console.log("ContactID to Remove: ", ContactID);
 
         currentData = currentData.filter(contact => contact.ContactId !== ContactID);
 
@@ -33,9 +33,3 @@ const apiEndpointDelete = "http://poosd.xyz/LAMPAPI/DeleteContact.php";
 
 const deleteButtons = document.querySelectorAll('.deleteButton');
 
-deleteButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        const row = button.closest('tr');
-        Delete(row.id);
-    });
-});
