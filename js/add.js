@@ -25,14 +25,14 @@ function add(){
       document.getElementById('lastNameAdd').value = '';
       document.getElementById('emailAdd').value = '';
       document.getElementById('phoneNumberAdd').value = '';
-  
+
       // Append Local Copy
-  
+
       const currentData = localStorage.getItem("localData");
-  
-  
+
+
       var userData = currentData ? JSON.parse(currentData) : [];
-  
+
       const newData = {
         "FirstName": firstNameAdd,
         "LastName": lastNameAdd,

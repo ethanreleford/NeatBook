@@ -3,7 +3,7 @@ function update(){
  const jsonUserData = JSON.parse(localStorage.getItem('localData'));
 
  document.getElementById("contactsTableBody").innerHTML = '';
- 
+
  for (let user of jsonUserData){
     const newRow = document.createElement('tr');
     newRow.setAttribute('id', user.ContactId);

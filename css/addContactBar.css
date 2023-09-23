@@ -13,8 +13,8 @@
 }
 
 .addBar {
-    width: 75%;
-    padding: 25px;
+    display: block;
+    padding: 15px;
     background-color: #f2f2f200;
 }
 
