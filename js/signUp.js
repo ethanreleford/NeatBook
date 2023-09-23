@@ -44,16 +44,11 @@
     });
 
 function userExists(username){
-    const usernameContainer = document.getElementById('usernameContainer');
     const errorMessage = document.getElementById('errorMessage');
+    const usernameInput = document.getElementById('username');
 
-    // Remove any existing error message
-    const existingErrorMessage = document.getElementById('errorMessage');
-    if(existingErrorMessage) existingErrorMessage.remove();
-
-    errorMessage.textContent = 'Username is already taken!';
+    errorMessage.textContent = username + ' is already taken!';
     errorMessage.style.display = 'inline'; // Show the error message
 
-    // Append the error message to the username container
-    usernameContainer.appendChild(errorMessage);
+    usernameInput.style.borderColor = '#d43900';
   }

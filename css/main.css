@@ -186,8 +186,8 @@
     color: #d43900;
     position: absolute;
     right: 0; /* Aligns the error message to the right of the username input */
-    top: -15px; /* Adjusts the vertical position of the error message above the input */
-    font-size: 12px;
+    top: -20px; /* Adjusts the vertical position of the error message above the input */
+    font-size: 16px;
     white-space: nowrap; /* Keeps the error message on one line */
     display: none; /* Initially hide the error message */
   }
