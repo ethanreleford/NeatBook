@@ -23,9 +23,6 @@
     width: 100%;
 
 }
-.adding{
-
-}
 
 .addTitle{
     margin-bottom: 5px;
@@ -73,7 +70,7 @@ button {
     outline: none;
 }
 
-button:hover {
+button:hover{
     background-color: #23c483;
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
     color: #fff;
@@ -81,7 +78,35 @@ button:hover {
     text-decoration: none;
 }
 
-button:active {
+.editButton{
+    background-color: #e0e0e0;
+}
+
+.deleteButton{
+    background-color: #e0e0e0;
+}
+
+.editButton:hover {
+    background-color: #23c483;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-5px);
+    text-decoration: none;
+}
+
+.deleteButton:hover {
+    background-color: #d43900;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-5px);
+    text-decoration: none;
+}
+
+
+.adding:active{
     transform: translateY(-1px);
 }
 
+button:active {
+    transform: translateY(-1px);
+}

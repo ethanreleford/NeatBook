@@ -63,3 +63,48 @@
     margin-bottom: 10px;
     margin-bottom: 20px;
 }
+
+[contenteditable="true"] {
+    outline: none;
+}
+
+/* Define the @keyframes animation for fading in the border */
+@keyframes borderFadeIn {
+    from {
+        border-color: transparent; /* Start with a transparent border */
+    }
+    to {
+        border-color: #212121; /* End with the desired border color */
+    }
+}
+
+/* Apply the borderFadeIn animation to the border */
+td[contenteditable="true"]:not(:last-child) div.editInput {
+    height: 35%;
+    margin: 0 auto; /* Center the div horizontally with a width of 90% */
+    max-width: 90%; /* Limit the maximum width to 90% */
+    border: 1px solid transparent; /* Start with a transparent border */
+    border-radius: 7px;
+    font-size: 16px;
+    background: none;
+    z-index: 1;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Add this for pseudo-element positioning */
+}
+
+/* Apply the fadeIn animation to the pseudo-element */
+td[contenteditable="true"]:not(:last-child) div.editInput::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid #212121; /* The final border color */
+    border-radius: 7px;
+    animation: borderFadeIn 1s ease-in-out;
+    pointer-events: none; /* Make the pseudo-element non-interactable */
+}

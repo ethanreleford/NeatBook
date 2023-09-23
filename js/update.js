@@ -9,10 +9,10 @@ function update(){
        const newRow = document.createElement('tr');
        newRow.setAttribute('id', user.ContactId);
         newRow.innerHTML = `
-            <td contenteditable="false">${user.FirstName}</td>
-            <td contenteditable="false">${user.LastName}</td>
-            <td contenteditable="false">${user.Email}</td>
-            <td contenteditable="false">${user.PhoneNumber}</td>
+            <td contenteditable="false"><div class = "editInput">${user.FirstName}</div></td>
+            <td contenteditable="false"><div class = "editInput">${user.LastName}</div></td>
+            <td contenteditable="false"><div class = "editInput">${user.Email}</div></td>
+            <td contenteditable="false"><div class = "editInput">${user.PhoneNumber}</div></td>
             <td>
                 <button class="optionButton editButton">
                     <span class="material-icons">edit</span>
@@ -30,5 +30,10 @@ function update(){
            const row = this.closest('tr');
            Delete(row.id);
        });
+
+       document.getElementById(user.ContactId).getElementsByClassName('editButton')[0].addEventListener('click', function() {
+        const row = this.closest('tr');
+        edit(row.id);
+    });
     }
    }

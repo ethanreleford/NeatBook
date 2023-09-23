@@ -31,5 +31,3 @@ function Delete(ContactID) {
 
 const apiEndpointDelete = "http://poosd.xyz/LAMPAPI/DeleteContact.php";
 
-const deleteButtons = document.querySelectorAll('.deleteButton');
-
