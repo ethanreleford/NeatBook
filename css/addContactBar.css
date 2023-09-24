@@ -96,7 +96,7 @@ button:hover{
 
 .deleteButton:hover {
     background-color: #d43900;
-    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    box-shadow: 0px 15px 20px rgba(212, 57, 0, 0.4);
     color: #fff;
     transform: translateY(-5px);
     text-decoration: none;
