@@ -12,10 +12,10 @@ function update(){
        var phonePattern = "^[0-9]{3}-[0-9]{3}-[0-9]{4}$";
         newRow.innerHTML = `
             <form>
-            <td contenteditable="false"><div class = "editInput" role="textbox" maxlength="50">${user.FirstName}</div></td>
-            <td contenteditable="false"><div class = "editInput" role="textbox" maxlength="50">${user.LastName}</div></td>
-            <td contenteditable="false"><div class = "editInput phoneNumber" role="textbox" maxlength="50" pattern=${emailPattern}>${user.Email}</div></td>
-            <td contenteditable="false"><div class = "editInput" role="textbox" maxlength="50">${user.PhoneNumber}</div></td>
+            <td><div contenteditable="false" class = "editInput" role="textbox" maxlength="50">${user.FirstName}</div></td>
+            <td><div contenteditable="false class = "editInput" role="textbox" maxlength="50">${user.LastName}</div></td>
+            <td><div contenteditable="false class = "editInput phoneNumber" role="textbox" maxlength="50" pattern=${emailPattern}>${user.Email}</div></td>
+            <td><div contenteditable="false class = "editInput" role="textbox" maxlength="50">${user.PhoneNumber}</div></td>
             <td style="display: flex;">
                 <button class="optionButton editButton">
                     <span class="material-icons">edit</span>

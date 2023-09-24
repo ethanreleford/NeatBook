@@ -79,7 +79,7 @@
 }
 
 /* Apply the borderFadeIn animation to the border */
-td[contenteditable="true"]:not(:last-child) div.editInput {
+div[contenteditable="true"]:not(:last-child) div.editInput {
     height: 35%;
     margin: 0 auto; /* Center the div horizontally with a width of 90% */
     max-width: 90%; /* Limit the maximum width to 90% */
@@ -96,7 +96,7 @@ td[contenteditable="true"]:not(:last-child) div.editInput {
 }
 
 /* Apply the fadeIn animation to the pseudo-element */
-td[contenteditable="true"]:not(:last-child) div.editInput::before {
+div[contenteditable="true"]:not(:last-child) div.editInput::before {
     content: "";
     position: absolute;
     top: 0;
@@ -107,4 +107,14 @@ td[contenteditable="true"]:not(:last-child) div.editInput::before {
     border-radius: 7px;
     animation: borderFadeIn 1s ease-in-out;
     pointer-events: none; /* Make the pseudo-element non-interactable */
+}
+
+.logoutButton {
+    position: absolute;
+    top: 15px; /* Adjust this value to change the distance from the top */
+    right: 6%; /* Adjust this value to change the distance from the right */
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }

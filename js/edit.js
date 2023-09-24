@@ -8,12 +8,12 @@ function edit(ContactID) {
       const span = saveBtn.querySelector('span');
       tds.forEach((td, index) => {
         if (index < tds.length - 1) {
-          const isEditable = td.getAttribute('contenteditable') === 'true';
-          td.contentEditable = isEditable ? 'false' : 'true';
-          td.classList.toggle('editable', !isEditable); // Apply the 'editable' class
+          const isEditable = td.querySelector("div").getAttribute('contenteditable') === 'true';
+          td.querySelector("div").contentEditable = isEditable ? 'false' : 'true';
+          td.querySelector("div").classList.toggle('editable', !isEditable); // Apply the 'editable' class
         }
 
-      if (tds[0].getAttribute('contenteditable') == 'true') {
+      if (tds[0].querySelector("div").getAttribute('contenteditable') == 'true') {
       span.className = "material-symbols-outlined";
       span.innerHTML = "save";
       }
@@ -27,7 +27,7 @@ function edit(ContactID) {
     // Toggle contenteditable and apply styles
     toggleContentEditable();
 
-    if (tds[0].contentEditable == 'false') {
+    if (tds[0].querySelector("div").contentEditable == 'false') {
       const editRequest = {
         "FirstName": tds[0].textContent,
         "LastName": tds[1].textContent,
