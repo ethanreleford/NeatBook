@@ -65,24 +65,9 @@
 }
 
 [contenteditable="true"] {
-    outline: none;
-}
-
-/* Define the @keyframes animation for fading in the border */
-@keyframes borderFadeIn {
-    from {
-        border-color: transparent; /* Start with a transparent border */
-    }
-    to {
-        border-color: #212121; /* End with the desired border color */
-    }
-}
-
-/* Apply the borderFadeIn animation to the border */
-div[contenteditable="true"]:not(:last-child) div.editInput {
     height: 35%;
     margin: 0 auto; /* Center the div horizontally with a width of 90% */
-    max-width: 90%; /* Limit the maximum width to 90% */
+    max-width: 110%; /* Limit the maximum width to 90% */
     border: 1px solid transparent; /* Start with a transparent border */
     border-radius: 7px;
     font-size: 16px;
@@ -93,12 +78,13 @@ div[contenteditable="true"]:not(:last-child) div.editInput {
     align-items: center;
     justify-content: center;
     position: relative; /* Add this for pseudo-element positioning */
-}
-
-/* Apply the fadeIn animation to the pseudo-element */
-div[contenteditable="true"]:not(:last-child) div.editInput::before {
+    outline: none;
+  }
+  
+  [contenteditable="true"]::before {
     content: "";
     position: absolute;
+    margin: 0 auto;
     top: 0;
     left: 0;
     right: 0;
@@ -107,8 +93,28 @@ div[contenteditable="true"]:not(:last-child) div.editInput::before {
     border-radius: 7px;
     animation: borderFadeIn 1s ease-in-out;
     pointer-events: none; /* Make the pseudo-element non-interactable */
-}
+    outline: none;
+  }  
 
+/* Define the @keyframes animation for fading in the border */
+@keyframes borderFadeIn {
+    from {
+        border-color: transparent; /* Start with a transparent border */
+    }
+    to {
+        border-color: #212121; /* End with the desired border color */
+    }
+}
+@keyframes borderFadeOut {
+    from {
+        border-color: #212121;
+    }
+    to {
+        border-color: transparent; 
+    }
+  }
+  
+  
 .logoutButton {
     position: absolute;
     top: 15px; /* Adjust this value to change the distance from the top */
