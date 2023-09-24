@@ -6,26 +6,35 @@ function edit(ContactID) {
     function toggleContentEditable() {
       const saveBtn = row.querySelector('.editButton');
       const span = saveBtn.querySelector('span');
+
+      const phoneNumber = row.querySelector('.phoneNumber');
       tds.forEach((td, index) => {
         if (index < tds.length - 1) {
           const isEditable = td.querySelector("div").getAttribute('contenteditable') === 'true';
           td.querySelector("div").contentEditable = isEditable ? 'false' : 'true';
           td.querySelector("div").classList.toggle('editable', !isEditable); // Apply the 'editable' class
         }
+      });
 
       if (tds[0].querySelector("div").getAttribute('contenteditable') == 'true') {
-      span.className = "material-symbols-outlined";
-      span.innerHTML = "save";
+        span.className = "material-symbols-outlined";
+        span.innerHTML = "save";
+
+        console.log(phoneNumber);
+
+        phoneNumber.addEventListener('keydown', enforceFormat);
+        phoneNumber.addEventListener('keyup', formatToPhone);
       }
       else {
         span.className = "material-icons";
         span.innerHTML = "edit";
       }
-      });
     }
 
     // Toggle contenteditable and apply styles
     toggleContentEditable();
+
+
 
     if (tds[0].querySelector("div").contentEditable == 'false') {
       const editRequest = {

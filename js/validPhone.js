@@ -25,16 +25,42 @@ const enforceFormat = (event) => {
 };
 
 const formatToPhone = (event) => {
-    if(isModifierKey(event)) {return;}
+    if (isModifierKey(event)) { return; }
 
-    const input = event.target.value.replace(/\D/g,'').substring(0,10); // First ten digits of input only
-    const areaCode = input.substring(0,3);
-    const middle = input.substring(3,6);
-    const last = input.substring(6,10);
+    const target = event.target;
+    const isContentEditableDiv = target.hasAttribute('contenteditable') && target.getAttribute('contenteditable') === 'true';
+    let input, cursorPosition;
 
-    if(input.length > 6){event.target.value = `(${areaCode}) ${middle}-${last}`;}
-    else if(input.length > 3){event.target.value = `(${areaCode}) ${middle}`;}
-    else if(input.length > 0){event.target.value = `(${areaCode}`;}
+    if (isContentEditableDiv) {
+        const selection = window.getSelection();
+        cursorPosition = selection.anchorOffset;
+        input = (target.textContent || '').replace(/\D/g, '').substring(0, 10);
+    } else {
+        input = (target.value || '').replace(/\D/g, '').substring(0, 10);
+    }
+
+    const areaCode = input.substring(0, 3);
+    const middle = input.substring(3, 6);
+    const last = input.substring(6, 10);
+
+    let formattedValue = '';
+    if (input.length > 6) { formattedValue = `(${areaCode}) ${middle}-${last}`; }
+    else if (input.length > 3) { formattedValue = `(${areaCode}) ${middle}`; }
+    else if (input.length > 0) { formattedValue = `(${areaCode}`; }
+
+    if (isContentEditableDiv) {
+        target.textContent = formattedValue;
+
+        // Move the cursor to the end of the div
+        const range = document.createRange();
+        const selection = window.getSelection();
+        range.selectNodeContents(target); // select all text contents
+        range.collapse(false); // collapse the range to its end point
+        selection.removeAllRanges(); // remove all ranges from the selection
+        selection.addRange(range); // add the new range to the selection
+    } else {
+        target.value = formattedValue;
+    }
 };
 
 const inputElements = document.querySelectorAll('.phoneNumber');
