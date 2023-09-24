@@ -1,44 +1,69 @@
+/* Style the table */
 table {
     width: 100%;
-    height: 100%;
-    border: 4px solid #FFFFFF;
     border-radius: 10px;
     margin: 0 auto;
-    border-collapse:collapse;
-    border-right: none;
-    border-bottom: none;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow */
+    background-color: transparent;
+    border:none;
 }
 
+tbody{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2)
+
+}
+/* Style the table header cells */
+thead{
+    border-top-left-radius: 10px;
+    background-color: #cecdcd;
+}
 thead th {
-    padding: 10px;
+    padding: 15px;
     text-align: center;
-    border: 4px solid #FFFFFF;
-    border-bottom: 4px solid #FFFFFF;
+    font-size: 20px;
+
 }
 
+
+/* Style the table rows */
 tr {
+    transition: background-color 0.3s ease-in-out;
+    /* No background color change */
+}
+
+/* Style the table data cells */
+td {
+    text-align: center;
+     /* Change border color to black */
+    width: 25%;
+}
+
+tr:nth-child(odd) {
     background-color: transparent;
 }
 
-td {
-    padding: 10px;
-    text-align: center;
-    border: 2px solid #FFFFFF;
-    border-radius: 5px;
-    width: 25%;
+/* Style every even row with a white background */
+tr:nth-child(even) {
+    background-color: #cecdcd;
+}
+
+/* Hover effect for table rows */
+tr:hover {
+
+    background-color: rgb(162, 160, 160);
 }
 
 .tableContainer {
     width: 65%;
-    height: 60%; 
-    overflow-y: auto; 
+    height: 60%;
+    overflow-y: auto;
     box-shadow: 10px 5px 15px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     padding: 20px;
     animation:
     emerge 1s ease-out .2s 1 forwards;
 }
-
 .optionButton {
     background-color: transparent;
     border: none;
@@ -47,4 +72,10 @@ td {
     color: black;
     margin-bottom: 6px;
     margin-top: 1px;
+    width: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+    margin-right: 5px;
 }

@@ -9,12 +9,14 @@
     outline: none;
     background: none;
     z-index: 1;
+    white-space: nowrap; /* Prevents the text from wrapping to the next line */
+    overflow-x: auto;    /* Enables horizontal scrolling */
   }
-  
+
   ::placeholder {
     color: transparent;
   }
-  
+
   .label {
       position: absolute;
       top: 6px;
@@ -31,25 +33,25 @@
       z-index: 10;
       color: black;
   }
-  
+
   .input:focus {
       border: 2px solid #12130F;
   }
-  
+
   .input:not(:placeholder-shown)+.label {
       top: -17px;
       left: 3px;
       z-index: 10;
   }
-  
+
 .search{
     width: 90%;
 }
 
 
 .add{
-    width: 90%;
-  
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .inputSearchContainer {
@@ -60,4 +62,65 @@
     width: 25%;
     margin-bottom: 10px;
     margin-bottom: 20px;
+}
+
+[contenteditable="true"] {
+    height: 35%;
+    margin: 0 auto; /* Center the div horizontally with a width of 90% */
+    max-width: 110%; /* Limit the maximum width to 90% */
+    border: 1px solid transparent; /* Start with a transparent border */
+    border-radius: 7px;
+    font-size: 16px;
+    background: none;
+    z-index: 1;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Add this for pseudo-element positioning */
+    outline: none;
+  }
+  
+  [contenteditable="true"]::before {
+    content: "";
+    position: absolute;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid #212121; /* The final border color */
+    border-radius: 7px;
+    animation: borderFadeIn 1s ease-in-out;
+    pointer-events: none; /* Make the pseudo-element non-interactable */
+    outline: none;
+  }  
+
+/* Define the @keyframes animation for fading in the border */
+@keyframes borderFadeIn {
+    from {
+        border-color: transparent; /* Start with a transparent border */
+    }
+    to {
+        border-color: #212121; /* End with the desired border color */
+    }
+}
+@keyframes borderFadeOut {
+    from {
+        border-color: #212121;
+    }
+    to {
+        border-color: transparent; 
+    }
+  }
+  
+  
+.logoutButton {
+    position: absolute;
+    top: 15px; /* Adjust this value to change the distance from the top */
+    right: 6%; /* Adjust this value to change the distance from the right */
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }

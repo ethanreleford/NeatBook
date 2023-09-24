@@ -1,34 +1,33 @@
-const apiEndpointDelete =  "http://poosd.xyz/LAMPAPI/DeleteContact.php"
+function Delete(ContactID) {
+    // 1. Call API to delete contactID
+    const deleteRequest = {
+        "Id" : ContactID
+    };
+    fetch(apiEndpointDelete, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(deleteRequest),
+    })
+    .then(response => response.json())
+    .then(data => {
+    // 2. Remove object from local JSON table
+        var currentData = JSON.parse(localStorage.getItem('localData'));
+        //console.log("ContactID to Remove: ", ContactID);
 
-const deleteButtons = document.querySelectorAll('deleteButton');
+        currentData = currentData.filter(contact => contact.ContactId !== ContactID);
 
-// Attach a click event listener to each delete button
-deleteButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        const row = button.closest('tr'); 
-        const firstNameDelete = row.querySelector('').textContent;
-        const lastNameDelete = row.querySelector('').textContent;
+        localStorage.setItem('localData', JSON.stringify(currentData))
+    // 3. Call update
 
-        const deleteRequest = {
-            "userId": "1",
-            "FirstName": firstNameDelete,
-            "LastName": lastNameDelete
-        };
+    update();
 
-        fetch(apiEndpointDelete, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(deleteRequest),
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Handle the response data or update the UI as needed
-            row.remove(); // Remove the row from the table on successful deletion
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+    })
+    .catch(error => {
+        console.error('Error:', error);
     });
-});
+}
+
+const apiEndpointDelete = "http://poosd.xyz/LAMPAPI/DeleteContact.php";
+

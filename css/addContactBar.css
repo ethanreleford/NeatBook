@@ -1,32 +1,56 @@
 .addContainer {
+    position: relative;
     width: 20%;
     height: 20%;
     box-shadow: 10px 5px 15px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     animation:
     emerge 1s ease-out .2s 1 forwards;
+    z-index: 1; /* Put div1 in front */
+}
+.addWrapper {
+    display: block !important;
 }
 
 .addBar {
-    width: 75%;
-    padding: 25px;
+    display: block;
+    padding: 15px;
     background-color: #f2f2f200;
 }
 
 .addBar input[type="text"],
 .addBar button {
     width: 100%;
-    
+
 }
-.adding{
-    margin-left: 10px;
+
+.addTitle{
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    position: static;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
 }
 
 .inputAddContainer {
     position: relative;
     height: 30px;
     width: 100%;
+    display: block;
+    box-sizing: border-box;
+    margin: 0 auto;
     margin-bottom: 22px;
+}
+
+label{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 button {
@@ -46,7 +70,7 @@ button {
     outline: none;
 }
 
-button:hover {
+button:hover{
     background-color: #23c483;
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
     color: #fff;
@@ -54,7 +78,35 @@ button:hover {
     text-decoration: none;
 }
 
-button:active {
+.editButton{
+    background-color: #e0e0e0;
+}
+
+.deleteButton{
+    background-color: #e0e0e0;
+}
+
+.editButton:hover {
+    background-color: #23c483;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-5px);
+    text-decoration: none;
+}
+
+.deleteButton:hover {
+    background-color: #d43900;
+    box-shadow: 0px 15px 20px rgba(212, 57, 0, 0.4);
+    color: #fff;
+    transform: translateY(-5px);
+    text-decoration: none;
+}
+
+
+.adding:active{
     transform: translateY(-1px);
 }
 
+button:active {
+    transform: translateY(-1px);
+}

@@ -1,76 +1,84 @@
-const editButtons = document.querySelectorAll('.edit-button');
-const tableRows = document.querySelectorAll('#contactsTableBody tr');
+function edit(ContactID) {
+    const row = document.getElementById(ContactID);
+    const tds = row.querySelectorAll('td');
 
-editButtons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-        const row = tableRows[index];
+    // Function to toggle the contenteditable attribute and style
+    function toggleContentEditable() {
+      const saveBtn = row.querySelector('.editButton');
+      const span = saveBtn.querySelector('span');
 
-        // Check if the row is in edit mode
-        const isEditMode = row.classList.contains('edit-mode');
-
-        if (!isEditMode) {
-
-            row.classList.add('edit-mode');
-            const cells = row.querySelectorAll('td');
-
-            cells.forEach((cell, cellIndex) => {
-
-                if (cellIndex < cells.length - 1) {
-                    const originalValue = cell.textContent;
-                    const input = document.createElement('input');
-                    input.value = originalValue;
-                    cell.textContent = '';
-                    cell.appendChild(input);
-                }
-            });
-        } else {
-
-            const cells = row.querySelectorAll('td');
-            const updatedData = {};
-
-            cells.forEach((cell, cellIndex) => {
-
-                if (cellIndex < cells.length - 1) {
-                    const input = cell.querySelector('input');
-                    const inputValue = input.value;
-                    updatedData[cellIndex === 0 ? 'FirstName' : 'Email'] = inputValue;
-                    cell.innerHTML = inputValue;
-                }
-            });
-
-
-            const apiEndpoint = 'http://poosd.xyz/LAMPAPI/UpdateContact.php';
-            const updateRequest = {
-                "FirstName": updatedData.FirstName,
-                "LastName": updatedData.LastName,
-                "Email": updatedData.Email,
-                "PhoneNumber": updatedData.PhoneNumber,
-                "Id": "1"
-            };
-
-            fetch(apiEndpoint, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(updateRequest),
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Handle the API response here
-                if (data.status === "success") {
-                    console.log("Contact updated successfully:", data.message);
-                } else {
-                    console.error("Failed to update contact:", data.error);
-                }
-            })
-            .catch(error => {
-                // Handle errors that occurred during the API request
-                console.error("Error while updating contact:", error);
-            });
-
-            // Remove the edit mode
-            row.classList.remove('edit-mode');
+      const phoneNumber = row.querySelector('.phoneNumber');
+      tds.forEach((td, index) => {
+        if (index < tds.length - 1) {
+          const isEditable = td.querySelector("div").getAttribute('contenteditable') === 'true';
+          td.querySelector("div").contentEditable = isEditable ? 'false' : 'true';
+          td.querySelector("div").classList.toggle('editable', !isEditable); // Apply the 'editable' class
         }
-    });
-});
+      });
+
+      if (tds[0].querySelector("div").getAttribute('contenteditable') == 'true') {
+        span.className = "material-symbols-outlined";
+        span.innerHTML = "save";
+
+        console.log(phoneNumber);
+
+        phoneNumber.addEventListener('keydown', enforceFormat);
+        phoneNumber.addEventListener('keyup', formatToPhone);
+      }
+      else {
+        span.className = "material-icons";
+        span.innerHTML = "edit";
+      }
+    }
+
+    // Toggle contenteditable and apply styles
+    toggleContentEditable();
+
+
+
+    if (tds[0].querySelector("div").contentEditable == 'false') {
+      const editRequest = {
+        "FirstName": tds[0].textContent,
+        "LastName": tds[1].textContent,
+        "Email": tds[2].textContent,
+        "PhoneNumber": tds[3].textContent,
+        "Id": ContactID
+      };
+
+      fetch(apiEndpointEdit, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(editRequest),
+      })
+        .then(response => response.json())
+        .then(data => {
+          const currentData = localStorage.getItem("localData");
+          let userData;
+
+          if (currentData) {
+            userData = Array.isArray(JSON.parse(currentData)) ? JSON.parse(currentData) : [];
+          } else {
+            userData = [];
+          }
+
+          const index = userData.findIndex(item => item.ContactId === ContactID);
+
+          if (index !== -1) {
+            userData[index] = {
+              ...userData[index],
+              ...editRequest
+            };
+          }
+
+          localStorage.setItem("localData", JSON.stringify(userData));
+          update();
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+  }
+
+  const apiEndpointEdit = "http://poosd.xyz/LAMPAPI/UpdateContact.php";

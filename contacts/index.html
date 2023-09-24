@@ -16,15 +16,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Arvo&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <script src="../js/search.js"></script>
-    <script src="../js/add.js"></script>
-    <script src="../js/delete.js"></script>
-    <script src="../js/edit.js"></script>
     <title>Contacts</title>
 </head>
 <body>
     <div class="top-bar">
         <h1 class = "userTitle">WELCOME, &nbsp<span id="firstNameDisplay" class = "typewriter"></span></h1>
+        <button class = "logoutButton" id="logoutButton">Logout</button>
         <div class="inputSearchContainer">
             <input type="text" class="search input" id = "searchInput" placeholder="a">
             <label class="label">Search</label>
@@ -34,49 +31,56 @@
 <div class="mainContainer">
 
     <div class = "addContainer">
-        <div class="fadeinWrapper">
+        <div class="fadeinWrapper addWrapper">
+            <form id="myForm">
+            <h1 class = "addTitle">ADD CONTACT</h1>
+            <div class="blankDiv"></div>
             <div class="addBar">
                 <div class="inputAddContainer">
-                    <input type="text" class="add input" id="firstNameAdd" placeholder="a">
+                    <input type="text" class="add input" id="firstNameAdd" placeholder="a" maxlength="50" required>
                     <label class="label">First Name</label>
                 </div>
                 <div class="inputAddContainer">
-                    <input type="text" class="add input" id="lastNameAdd" placeholder="a">
+                    <input type="text" class="add input" id="lastNameAdd" placeholder="a" maxlength="50">
                     <label class="label">Last Name</label>
                 </div>
                 <div class="inputAddContainer">
-                    <input type="text" class="add input" id="emailAdd" placeholder="a">
-                    <label class="label">Email</label>
+                    <input type="email" class="add input" id="emailAdd" placeholder="a" maxlength="50" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+                    <label for="" class="label">Email</label>
                 </div>
                 <div class="inputAddContainer">
-                    <input type="text" class="add input" id="phoneNumberAdd" placeholder="a">
-                    <label class="label">Phone Number</label>
+                    <input type="text" class="add input phoneNumber" id="phoneNumberAdd" placeholder="a" maxlength="16">
+                    <label class="label">Phone #</label>
                 </div>
-                <div >
-                    <button class="adding button" id="addButton">ADD</button>
+                <div>
+                    <button type = "submit" class="adding button" id = "addButton">ADD</button>
                 </div>
+            </form>
             </div>
         </div>
     </div>
-
     <div class = "tableContainer">
     <div class="fadeinWrapper">
         <table>
             <thead>
-                <tr>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Email</th>
-                    <th>Phone Number</th>
+                    <th>Phone #</th>
                     <th></th>
-                </tr>
             </thead>
             <tbody id="contactsTableBody">
-            </tbody>
         </table>
     </div>
 </div>
 </div>
 <div class="bottom"></div>
+<script src="../js/update.js"></script>
+<script src="../js/search.js"></script>
+<script src="../js/add.js"></script>
+<script src="../js/delete.js"></script>
+<script src="../js/edit.js"></script>
+<script src="../js/validPhone.js"></script>
+<script src="../js/logout.js"></script>
 </body>
 </html>
